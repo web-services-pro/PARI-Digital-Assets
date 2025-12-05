@@ -14,149 +14,297 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "PARI Digital Assets",
-    "description": "We specialize in creating passive automated recurring income streams from digital assets. Expert digital dealmaking for content creators, course owners, and audience builders.",
-    "url": "https://www.paridigitalassets.pro",
-    "logo": "https://www.paridigitalassets.pro/logo.svg",
-    "image": "https://www.paridigitalassets.pro/logo.svg",
-    "telephone": "+1-916-318-7107",
-    "email": "owner@paridigitalassets.pro",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "3713 S George Mason Dr",
-      "addressLocality": "Falls Church",
-      "addressRegion": "VA",
-      "postalCode": "22041",
-      "addressCountry": "US"
-    },
-    "openingHours": "Mo-Su 00:00-23:59",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+1-916-318-7107",
-      "contactType": "customer service",
-      "email": "owner@paridigitalassets.pro",
-      "availableLanguage": "English"
-    },
-    "sameAs": [
-      "https://www.paridigitalassets.pro"
-    ],
-    "foundingDate": "2025",
-    "numberOfEmployees": "1-10",
-    "slogan": "Turn Your Assets Into Passive Recurring Revenue",
-    "keywords": "passive income, digital assets, recurring revenue, content monetization, digital dealmaking, asset repurposing",
-    "serviceArea": {
-      "@type": "Place",
-      "name": "Worldwide"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "PARI Digital Assets Services",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Digital Asset Monetization",
-            "description": "Transform existing digital content into passive recurring income streams through strategic repurposing and placement."
-          }
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://paridigitalassets.pro/#organization",
+        "name": "PARI Digital Assets",
+        "url": "https://paridigitalassets.pro/",
+        "logo": "https://paridigitalassets.pro/logo.svg",
+        "image": "https://www.paridigitalassets.pro/logo.svg",
+        "description": "We specialize in creating passive, automated, recurring income streams by repurposing and licensing digital assets for creators and businesses.",
+        "slogan": "Unlock Passive Automated Recurring Income From Your Digital Assets",
+        "sameAs": [
+          "https://www.paridigitalassets.pro"
+        ],
+        "keywords": "passive income, digital assets, recurring revenue, content monetization, digital dealmaking, asset repurposing",
+        "foundingDate": "2025",
+        "numberOfEmployees": "1-10",
+        "founder": {
+          "@type": "Person",
+          "name": "Basel Hakim",
+          "jobTitle": "Head of Digital Dealmaking",
+          "description": "Dedicated to the passive automated recurring income model, helping asset owners become digital landlords."
         },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "AI-Powered Lead Revival",
-            "description": "Use AI agents to automatically follow up with old leads and customers to generate new sales, reviews, and referrals."
+        "knowsAbout": [
+          {
+            "@type": "DefinedTerm",
+            "name": "Passive Income",
+            "url": "https://www.wikidata.org/wiki/Q1148625"
+          },
+          {
+            "@type": "DefinedTerm",
+            "name": "Digital Asset",
+            "url": "https://www.wikidata.org/wiki/Q743282"
+          },
+          {
+            "@type": "DefinedTerm",
+            "name": "Business Development",
+            "url": "https://www.wikidata.org/wiki/Q3235210"
+          },
+          {
+            "@type": "DefinedTerm",
+            "name": "Licensing",
+            "url": "https://www.wikidata.org/wiki/Q1135626"
+          },
+          {
+            "@type": "DefinedTerm",
+            "name": "Artificial Intelligence",
+            "url": "https://www.wikidata.org/wiki/Q11660"
           }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Manassas",
+          "addressRegion": "Virginia",
+          "postalCode": "20112",
+          "addressCountry": "US"
         },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Digital Asset Acquisition",
-            "description": "Acquire high-leverage digital assets that generate passive automated recurring income with minimal ongoing effort."
-          }
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+1-703-662-9320",
+          "contactType": "customer service",
+          "email": "owner@paridigitalassets.pro",
+          "availableLanguage": ["English"]
         },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Content Repurposing",
-            "description": "Repurpose existing content into multiple formats and revenue streams including AI tools, books, courses, and licensing opportunities."
+        "potentialAction": {
+          "@type": "CommunicateAction",
+          "name": "Partner With Us",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://paridigitalassets.pro/#contact",
+            "actionPlatform": [
+              "http://schema.org/DesktopWebPlatform",
+              "http://schema.org/MobileWebPlatform"
+            ]
           }
         }
-      ]
-    }
-  }
-  </script>
-
-  <!-- FAQ Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+      },
       {
-        "@type": "Question",
-        "name": "What exactly is PARI?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "PARI stands for Passive Automated Recurring Income. It's a business model focused on creating income streams that generate revenue repeatedly without requiring your ongoing time or effort. Think of it like digital real estate - you set it up once, and it pays you continuously."
+        "@type": "Service",
+        "@id": "https://paridigitalassets.pro/#service-monetization",
+        "name": "Asset Monetization & Repurposing",
+        "serviceType": "Business Consulting",
+        "provider": {
+          "@id": "https://paridigitalassets.pro/#organization"
+        },
+        "description": "We identify hidden opportunities in existing content (courses, books, newsletters) and repurpose them into new income streams like AI tools or licensing deals.",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Repurposing Solutions and Digital Assets Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Online Course to AI Tool Conversion"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "YouTube to Book Transcription"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Digital Asset Monetization",
+                "description": "Transform existing digital content into passive recurring income streams through strategic repurposing and placement."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "AI-Powered Lead Revival",
+                "description": "Use AI agents to automatically follow up with old leads and customers to generate new sales, reviews, and referrals."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Digital Asset Acquisition",
+                "description": "Acquire high-leverage digital assets that generate passive automated recurring income with minimal ongoing effort."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Content Repurposing",
+                "description": "Repurpose existing content into multiple formats and revenue streams including AI tools, books, courses, and licensing opportunities."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Newsletter to Template Library Licensing"
+              }
+            }
+          ]
         }
       },
       {
-        "@type": "Question",
-        "name": "How is this different from traditional business models?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Traditional models often require trading time for money. PARI focuses on leveraging existing digital assets to create income that flows automatically. Instead of creating new products, we repurpose what you already have into multiple revenue streams."
+        "@type": "Service",
+        "@id": "https://paridigitalassets.pro/#service-lead-revival",
+        "name": "AI-Powered Lead Revival",
+        "serviceType": "Marketing Automation",
+        "provider": {
+          "@id": "https://paridigitalassets.pro/#organization"
+        },
+        "description": "Using custom-trained AI agents to follow up with past customers, old unconverted leads and dormant databases to generate new sales, reviews, and referrals automatically.",
+        "audience": {
+          "@type": "BusinessAudience",
+          "audienceType": "Businesses with large CRM database of leads and customers",
+          "geographicArea": {
+            "@type": "AdministrativeArea",
+            "name": "Global"
+          },
+          "description": "Companies with thousands of unconverted leads or past customers."
         }
       },
       {
-        "@type": "Question",
-        "name": "What if I don't have any digital assets?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You likely have more assets than you realize! Social media posts, emails you've sent, presentations you've given, or even your expertise and audience can be valuable assets. We help identify hidden opportunities in what you already possess."
+        "@type": "Service",
+        "@id": "https://paridigitalassets.pro/#service-digital-clone",
+        "name": "Digital Business Cloning",
+        "serviceType": "Digital Transformation",
+        "provider": {
+          "@id": "https://paridigitalassets.pro/#organization"
+        },
+        "description": "Creating a digital replica of a physical business to operate 24/7, sell digital products globally, and generate additional passive revenue streams.",
+        "audience": {
+          "@type": "BusinessAudience",
+          "audienceType": "Businesses or Entreprenuers that sell products or services",
+          "geographicArea": {
+            "@type": "AdministrativeArea",
+            "name": "Global"
+          },
+          "description": "Companies or Entreprenuers that pay for advertising and marketing."
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Cloning Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Expertise Digitization (Courses/Webinars)"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Automated E-commerce Setup"
+              }
+            }
+          ]
         }
       },
       {
-        "@type": "Question",
-        "name": "How much does it cost to partner with you?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Our partnerships are typically risk-free for you. We often work on revenue-sharing models where you only pay us when we generate income for you. We handle the upfront work and investment, and we both benefit from the results."
-        }
+        "@type": "FAQPage",
+        "@id": "https://paridigitalassets.pro/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What exactly is PARI?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "PARI stands for Passive Automated Recurring Income. It's a business model focused on creating income streams that generate revenue repeatedly without requiring your ongoing time or effort. Think of it like digital real estate - you set it up once, and it pays you continuously."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is this different from traditional business models?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Traditional models often require trading time for money. PARI focuses on leveraging existing digital assets to create income that flows automatically. Instead of creating new products, we repurpose what you already have into multiple revenue streams."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What if I don't have any digital assets?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You likely have more assets than you realize! Social media posts, emails you've sent, presentations you've given, or even your expertise and audience can be valuable assets. We help identify hidden opportunities in what you already possess."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does it cost to partner with you?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Our partnerships are typically risk-free for you. We often work on revenue-sharing models where you only pay us when we generate income for you. We handle the upfront work and investment, and we both benefit from the results."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does it take to see results?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Timeline varies depending on the asset and opportunity. We typically start with small tests that can show results within 30-90 days. Once we prove the concept works, we scale it into a sustainable income stream."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I retain ownership of my assets?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutely! You maintain full ownership of your original assets. We typically work through licensing agreements or revenue-sharing partnerships that benefit both parties while preserving your ownership rights."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What types of assets work best for PARI?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Educational content, courses, books, email lists, social media followings, software tools, and proven marketing materials all work well. The key is assets that can be repurposed, licensed, or leveraged for recurring revenue."
+            }
+          }
+        ]
       },
       {
-        "@type": "Question",
-        "name": "How long does it take to see results?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Timeline varies depending on the asset and opportunity. We typically start with small tests that can show results within 30-90 days. Once we prove the concept works, we scale it into a sustainable income stream."
+        "@type": "WebPage",
+        "@id": "https://paridigitalassets.pro/#webpage",
+        "url": "https://paridigitalassets.pro/",
+        "name": "PARI Digital Assets - Passive Automated Recurring Income Strategies",
+        "publisher": {
+          "@type": "Organization",
+          "name": "PARI Digital Assets"
+        },
+        "description": "Turn your existing digital assets into passive recurring income streams. We help creators and businesses repurpose content, revive leads with AI, and license IP for recurring revenue.",
+        "about": {
+          "@id": "https://paridigitalassets.pro/#organization"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://www.paridigitalassets.pro/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        },
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://paridigitalassets.pro/#website",
+          "name": "PARI Digital Assets",
+          "url": "https://paridigitalassets.pro/"
         }
       }
     ]
-  }
-  </script>
-
-  <!-- Website Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "PARI Digital Assets",
-    "url": "https://www.paridigitalassets.pro",
-    "description": "Turn your digital assets into passive recurring income streams. Expert digital dealmaking for content creators, course owners, and audience builders.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "PARI Digital Assets"
-    },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://www.paridigitalassets.pro/?s={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
   }
   </script>
 </head>
