@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Quote Estimate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>body { background-color: #020617; font-family: 'Inter', sans-serif; color: #f8fafc; } .glass-panel { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(71, 85, 105, 0.6); }</style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+    <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-10">
+            <img src="images/logo-SAMS-Constr-Logo.jpg" alt="SAMS Construction Group" class="h-16 md:h-20 mx-auto mb-6 object-contain"> <h1 class="text-3xl md:text-5xl font-bold mb-4 text-white">Your Estimated Price Range</h1>
+            <p class="text-slate-400 text-lg">Based on current pricing for ADU's (Additional Dwelling Units)</p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-700 rounded-2xl p-8 mb-12 text-center relative overflow-hidden shadow-2xl">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+            <div class="flex justify-center items-center gap-2 mb-2">
+                <span class="text-5xl md:text-6xl font-black text-green-400 tracking-tight">$<span id="lowPrice">0</span></span>
+                <span class="text-2xl text-slate-500 font-bold">-</span>
+                <span class="text-5xl md:text-6xl font-black text-green-400 tracking-tight">$<span id="highPrice">0</span></span>
+            </div>
+            <p class="text-sm text-slate-400 uppercase tracking-wide font-medium">Estimated Project Total</p>
+        </div>
+
+        <h2 class="text-2xl font-bold text-white mb-6 pl-3 border-l-4 border-blue-500">Quote Range Breakdown</h2>
+        <div id="breakdown" class="space-y-4 mb-12"></div>
+
+        <h2 class="text-2xl font-bold text-white mb-6 pl-3 border-l-4 border-yellow-500">What Others Are Saying</h2>
+        <div class="relative w-full max-w-4xl mx-auto mb-12 overflow-hidden rounded-xl border border-slate-700 shadow-2xl group">
+            <div class="flex transition-transform duration-500" id="testimonialTrack"><div class="min-w-full"><img src="images/review-0-SAMS-Review3.png" class="w-full h-auto object-contain bg-slate-900"></div><div class="min-w-full"><img src="images/review-1-SAMS-Review2.png" class="w-full h-auto object-contain bg-slate-900"></div><div class="min-w-full"><img src="images/review-2-SAMS-Review1.png" class="w-full h-auto object-contain bg-slate-900"></div></div>
+            <button onclick="moveTestimonial(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 p-3 rounded-full text-white hover:bg-black/80">❮</button>
+            <button onclick="moveTestimonial(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 p-3 rounded-full text-white hover:bg-black/80">❯</button>
+        </div>
+        <script>
+            let testIndex = 0;
+            const tTrack = document.getElementById('testimonialTrack');
+            const tCount = 3;
+            function moveTestimonial(n) {
+                testIndex = (testIndex + n + tCount) % tCount;
+                tTrack.style.transform = 'translateX(-' + (testIndex * 100) + '%)';
+            }
+        </script>
+        
+        <h2 class="text-2xl font-bold text-white mb-6 pl-3 border-l-4 border-blue-500">Check Out Our Recent Work!</h2><div class="relative w-full max-w-4xl mx-auto mb-12 overflow-hidden rounded-xl border border-slate-700 shadow-2xl">
+            <div class="flex transition-transform duration-500" id="portfolioTrack"><div class="min-w-full"><img src="images/portfolio-0-Calabasas.webp" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-1-WhatsApp-Image-2026-01-23-at-5.17.45-PM-(1).jpeg" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-2-WhatsApp-Image-2026-01-23-at-5.17.45-PM.jpeg" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-3-WhatsApp-Image-2026-01-23-at-5.17.46-PM-(2).jpeg" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-4-WhatsApp-Image-2026-01-23-at-5.18.40-PM-(3).jpeg" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-5-WhatsApp-Image-2026-01-23-at-5.18.40-PM-(8).jpeg" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-6-WhatsApp-Image-2026-01-23-at-5.19.07-PM-(3).jpeg" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-7-WhatsApp-Image-2026-01-23-at-5.19.07-PM-(7).jpeg" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-8-WhatsApp-Image-2026-01-23-at-5.19.08-PM-(2).jpeg" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-9-WhatsApp-Image-2026-01-23-at-5.19.08-PM-(4).jpeg" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-10-WhatsApp-Image-2026-01-23-at-5.19.08-PM.jpeg" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-11-WhatsApp-Image-2026-01-23-at-5.19.25-PM.jpeg" class="w-full h-[400px] object-cover"></div></div>
+            <button onclick="moveSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 p-3 rounded-full text-white hover:bg-black/80">❮</button>
+            <button onclick="moveSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 p-3 rounded-full text-white hover:bg-black/80">❯</button>
+        </div>
+        <script>
+            let slideIndex = 0;
+            const track = document.getElementById('portfolioTrack');
+            const count = 12;
+            function moveSlide(n) {
+                slideIndex = (slideIndex + n + count) % count;
+                track.style.transform = 'translateX(-' + (slideIndex * 100) + '%)';
+            }
+        </script>
+        
+        <h2 class="text-2xl font-bold text-white mb-6 pl-3 border-l-4 border-teal-500">Frequently Asked Questions</h2>
+        <div class="space-y-4 mb-12">
+            <p class="text-slate-400 italic">No specific FAQs generated for this estimate.</p>
+        </div>
+        
+        <div class="bg-blue-900/20 border border-blue-500/30 p-8 rounded-2xl text-center mt-12">
+            <h3 class="text-2xl font-bold mb-4 text-white">Ready to move forward with your desired service?</h3>
+            <p class="text-slate-300 mb-6">This is a rough estimate range. To get an exact quote, schedule an Appointment.</p>
+            <a href="[object Object],[object Object],[object Object],[object Object],[object Object]" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-500 text-white text-xl font-bold py-4 px-10 rounded-xl transition-all shadow-lg transform hover:scale-[1.02]">
+                Schedule Appointment &rarr;
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        // Helper to safely get integers from params
+        const getInt = (k) => parseInt(params.get(k)) || 0;
+        const getString = (k) => params.get(k) || '';
+        
+        // --- AI GENERATED PRICING LOGIC ---
+        // 'inputs' object mimics the backend data structure for the formula
+        const inputs = Object.fromEntries(params.entries());
+        
+        const aduType = inputs.q1 || 'detached';
+const sqft = parseInt(inputs.q2) || 600;
+const finishLevel = inputs.q3 || 'mid_grade';
+const bathroomCount = parseInt(inputs.q4) || 1;
+const siteCondition = inputs.q5 || 'easy';
+const demolition = inputs.q6 || 'no';
+
+let baseRateLow, baseRateHigh;
+let permitCostLow, permitCostHigh;
+
+if (aduType === 'garage_conversion') {
+  baseRateLow = 100;
+  baseRateHigh = 225;
+  permitCostLow = 15000;
+  permitCostHigh = 30000;
+} else { // Detached
+  baseRateLow = 250;
+  baseRateHigh = 400;
+  permitCostLow = 20000;
+  permitCostHigh = 40000;
+}
+
+let finishMultiplier = 1.0;
+if (finishLevel === 'mid_grade') {
+  finishMultiplier = 1.15;
+} else if (finishLevel === 'high_end') {
+  finishMultiplier = 1.30;
+  if (aduType === 'detached') { baseRateHigh = 450; } // Use custom premium rate for high end detached
+}
+
+let siteMultiplier = 1.0;
+if (siteCondition === 'moderate') {
+  siteMultiplier = 1.07;
+} else if (siteCondition === 'difficult') {
+  siteMultiplier = 1.15;
+}
+
+let demolitionCost = 0;
+if (demolition === 'yes') {
+  demolitionCost = 7500;
+}
+
+let additionalBathroomCost = (bathroomCount > 1) ? (bathroomCount - 1) * 15000 : 0;
+
+const baseCostLow = (sqft * baseRateLow * finishMultiplier * siteMultiplier) + additionalBathroomCost + demolitionCost;
+const baseCostHigh = (sqft * baseRateHigh * finishMultiplier * siteMultiplier) + additionalBathroomCost + demolitionCost;
+
+const contingencyLow = baseCostLow * 0.10;
+const contingencyHigh = baseCostHigh * 0.10;
+
+const profitMarginLow = 0.20;
+const profitMarginHigh = 0.30;
+
+const totalPreProfitLow = baseCostLow + permitCostLow + contingencyLow;
+const totalPreProfitHigh = baseCostHigh + permitCostHigh + contingencyHigh;
+
+var low = Math.round((totalPreProfitLow * (1 + profitMarginLow)) / 1000) * 1000;
+var high = Math.round((totalPreProfitHigh * (1 + profitMarginHigh)) / 1000) * 1000;
+
+// Special Offer Logic
+// We don't deduct from the quote, we just highlight it. The cost is already factored in.
+ 
+        // Logic expects variables 'low' and 'high' to be defined by the AI code block above.
+
+        // Safety fallback
+        if (typeof low === 'undefined') var low = 0;
+        if (typeof high === 'undefined') var high = 0;
+
+        document.getElementById('lowPrice').innerText = Math.round(low).toLocaleString();
+        document.getElementById('highPrice').innerText = Math.round(high).toLocaleString();
+
+        // --- DYNAMIC BREAKDOWN ---
+        const insights = [{"id":"q1","title":"ADU Type","insight":"Garage conversions are typically the most cost-effective option as they use an existing structure. New detached ADUs offer more design flexibility but involve higher costs for foundations, framing, and utility connections."},{"id":"q2","title":"Square Footage","insight":"Size is the largest driver of total cost. While larger ADUs cost more overall, they often have a slightly lower price per square foot due to efficiencies of scale in materials and labor."},{"id":"q3","title":"Finish Level","insight":"Your choice of finishes directly impacts the budget. Builder-grade is budget-friendly, while high-end options like custom cabinetry, stone countertops, and premium flooring increase the investment but also the property value."},{"id":"q4","title":"Bathrooms","insight":"Each additional bathroom adds a significant cost due to the complexity of plumbing, fixtures, tiling, and ventilation. We ensure all bathrooms are built to code with high-quality waterproofing."},{"id":"q5","title":"Site Condition","insight":"A flat lot with easy access for machinery and material delivery keeps preparation costs low. Sloped or difficult-to-access sites may require additional investment in grading, foundation work, and labor."},{"id":"q6","title":"Demolition & Structural","insight":"Projects requiring significant demolition or structural modifications to an existing building add complexity and cost. Our team is fully equipped to handle these challenges safely and efficiently."},{"id":"q7","title":"Primary Motivation","insight":{"rental_income":"That's a fantastic investment strategy. We specialize in building durable, appealing ADUs that attract high-quality tenants, helping you maximize your return on investment quickly.","family":"Building a space for family is a wonderful goal. We'll focus on creating a comfortable, safe, and accessible home that will serve your loved ones for years to come.","flex_space":"Creating a dedicated space for work or hobbies is a great way to improve your quality of life. We can design a versatile ADU that adapts to your changing needs, whether it's an office today or a guest suite tomorrow."}},{"id":"q8","title":"Your Top Priority","insight":{"speed":"Excellent. Our unique selling point is our fast completion time. We have dedicated crews and streamlined processes to get your project finished significantly faster than the industry average, without sacrificing quality.","quality":"We share that priority. At SAMS Construction, high-quality workmanship is our signature. We use skilled craftsmen and superior materials to ensure your ADU is built to last and exceeds your expectations.","budget":"Getting the best value is a smart approach. We'll work with you to optimize the plan, suggesting materials and methods that provide the best quality and durability for your budget. We believe in transparent pricing with no surprises."}},{"id":"q9","title":"Project Timeline","insight":{"now":"Perfect. We have availability to start the design and permitting process right away. Let's schedule your on-site consultation to lock in your project slot and take advantage of our current incentives.","1_3_months":"That's a great timeframe to get all the planning and permits in order. We can start the pre-construction phase now to ensure we're ready to break ground the moment you are.","3_6_months":"It's wise to plan ahead. We can provide you with a detailed estimate and design concepts now, giving you ample time to prepare and make decisions without feeling rushed."}},{"id":"q10","title":"Your Experience Level","insight":{"experienced":"Great, you'll appreciate our professionalism, clear communication, and efficient project management. We're confident you'll find our process to be a seamless and positive experience.","first_timer":"You've come to the right place. We specialize in guiding homeowners through their first major project. We'll explain every step, answer all your questions, and manage the entire process so you can have a stress-free experience."}}];
+        const container = document.getElementById('breakdown');
+        
+        insights.forEach(item => {
+            // Force the key to match the Q1, Q2 structure we enforced in index.html
+            // We find the answer based on the order of the insight in the array (safe fallback)
+            const keys = Object.keys(inputs).filter(k => k.startsWith('q'));
+            const questionIndex = insights.indexOf(item); 
+            const inputKey = keys[questionIndex] || item.id; 
+            const userVal = inputs[inputKey] || 'Not selected';
+            
+            let insightText = item.insight;
+
+            // Handle Object structures (Safe Flattening)
+            if (typeof insightText === 'object' && insightText !== null) {
+                // 1. Try exact match
+                if (insightText[userVal]) {
+                    insightText = insightText[userVal];
+                } 
+                // 2. Try partial match (case insensitive)
+                else if (userVal && typeof userVal === 'string') {
+                     const match = Object.keys(insightText).find(k => k.toLowerCase() === userVal.toLowerCase());
+                     if (match) insightText = insightText[match];
+                     else insightText = Object.values(insightText)[0]; // Fallback
+                }
+                // 3. Last Resort Fallback
+                else {
+                    insightText = Object.values(insightText)[0];
+                }
+            }
+
+            // Final safety check: If it's STILL an object (nested), stringify it or grab the first string property
+            if (typeof insightText === 'object') {
+                 insightText = insightText.content || insightText.text || JSON.stringify(insightText);
+            }
+
+            container.innerHTML += `
+            <div class="glass-panel p-6 rounded-xl border-l-4 border-slate-600">
+                <h4 class="font-bold text-lg text-white mb-1">${item.title}</h4>
+                <div class="flex justify-between items-center mb-3">
+                    <span class="text-slate-400 text-sm">Your Input:</span>
+                    <span class="text-blue-300 font-medium">${userVal}</span>
+                </div>
+                <p class="text-slate-300 text-sm border-t border-slate-700 pt-3 leading-relaxed">${insightText}</p>
+            </div>`;
+        });
+    </script>
+</body>
+</html>
