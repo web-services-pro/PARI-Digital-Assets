@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 ADU Cost Calculator - Los Angeles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #020617; font-family: 'Inter', sans-serif; color: white; }
+        .quiz-card { background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(100, 116, 139, 0.5); backdrop-filter: blur(12px); }
+        .option-btn { transition: all 0.2s; border: 1px solid rgba(100, 116, 139, 0.5); background: rgba(15, 23, 42, 0.8); font-size: 1.125rem; }
+        .option-btn:hover { background-color: rgba(59, 130, 246, 0.3); border-color: #60a5fa; transform: translateY(-2px); color: #ffffff; }
+        .hidden-step { display: none; }
+        .fade-in { animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+    <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+        <div class="absolute top-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="max-w-xl w-full">
+        <div class="text-center mb-6">
+            <img src="images/logo-SAMS-Constr-Logo.jpg" alt="SAMS Construction Group" class="h-20 mx-auto mb-6 object-contain">
+        </div>
+        
+        <div id="progressContainer" class="mb-6 hidden-step">
+            <div class="flex justify-between text-sm text-slate-300 mb-2 font-medium">
+                <span>Estimate Progress</span>
+                <span>Step <span id="currentStepNum">1</span> of 15</span>
+            </div>
+            <div class="h-3 w-full bg-slate-800 rounded-full border border-slate-600">
+                <div id="progressBar" class="h-full bg-gradient-to-r from-blue-500 to-indigo-400 transition-all duration-500" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <div class="quiz-card rounded-2xl p-6 md:p-10 shadow-2xl relative">
+            <form id="quizForm">
+                <div id="introPage" class="text-center fade-in">
+                    <span class="inline-block py-1 px-4 rounded-full bg-blue-500/20 border border-blue-400 text-blue-300 text-sm font-bold mb-6">● Updated for 2026 Pricing</span>
+                    <h1 class="text-3xl md:text-4xl font-extrabold mb-4 text-white">Get Your Official ADU Quote</h1>
+                    <p class="text-slate-300 text-lg mb-8">Materials. Labor. Permits. Get a real-time estimate based on current Los Angeles construction data.</p>
+                    <button type="button" onclick="startQuiz()" class="w-full bg-blue-600 hover:bg-blue-500 text-white text-xl font-bold py-5 rounded-xl shadow-lg transform hover:scale-[1.02]">Start Free Estimate &rarr;</button>
+                </div>
+        
+                <div class="step hidden-step fade-in" data-step="1">
+                    <h2 class="text-xl font-bold mb-4">What type of ADU are you planning?</h2>
+                    <div class="space-y-3">
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(1, 'q1', 'garage_conversion', '2')">Garage Conversion (Existing Structure)</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(1, 'q1', 'detached', '2')">New Detached Unit (Backyard Home)</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(1, 'q1', 'attached', '2')">Attached Addition (Connected to House)</div>
+                    </div>
+                </div>
+
+                <div class="step hidden-step fade-in" data-step="2">
+                    <h2 class="text-xl font-bold mb-4">Approximate Square Footage?</h2>
+                    <div class="space-y-3">
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(2, 'q2', '400', '3')">Studio (Approx 400 sq ft)</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(2, 'q2', '600', '3')">1 Bedroom (Approx 600 sq ft)</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(2, 'q2', '800', '3')">2 Bedroom (Approx 800 sq ft)</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(2, 'q2', '1200', '3')">3 Bedroom / Large (1000+ sq ft)</div>
+                    </div>
+                </div>
+
+                <div class="step hidden-step fade-in" data-step="3">
+                    <h2 class="text-xl font-bold mb-4">Finish Level Desired?</h2>
+                    <div class="space-y-3">
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(3, 'q3', 'standard', '4')">Standard (Cost-effective, LVP floors, simple trim)</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(3, 'q3', 'mid_range', '4')">Mid-Range (Quartz counters, tile showers, upgraded appliances)</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(3, 'q3', 'high_end', '4')">Luxury (Custom cabinets, hardwood, premium fixtures)</div>
+                    </div>
+                </div>
+
+                <div class="step hidden-step fade-in" data-step="4">
+                    <h2 class="text-xl font-bold mb-4">Describe the Construction Site</h2>
+                    <div class="space-y-3">
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(4, 'q4', 'flat_access', '5')">Flat yard with easy access</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(4, 'q4', 'sloped_mod', '5')">Moderate Slope / Narrow Access</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(4, 'q4', 'demo', '5')">Requires Demolition of old shed/garage first</div>
+                    </div>
+                </div>
+
+                <div class="step hidden-step fade-in" data-step="5">
+                    <h2 class="text-xl font-bold mb-4">Utility Connections?</h2>
+                    <div class="space-y-3">
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(5, 'q5', 'tie_in', '6')">Tie-in to main house (Cheapest)</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(5, 'q5', 'new_lines', '6')">New separate lines to street (Required for some rentals)</div>
+                    </div>
+                </div>
+
+                <div class="step hidden-step fade-in" data-step="6">
+                    <h2 class="text-xl font-bold mb-4">Do you have plans?</h2>
+                    <div class="space-y-3">
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(6, 'q6', 'plans_ready', '7')">Yes, approved and ready</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(6, 'q6', 'needs_design', '7')">No, I need Design & Permitting services</div>
+                    </div>
+                </div>
+
+                <div class="step hidden-step fade-in" data-step="7">
+                    <h2 class="text-xl font-bold mb-4">Primary Goal?</h2>
+                    <div class="space-y-3">
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(7, 'q7', 'rental', '8')">Rental Income</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(7, 'q7', 'family', '8')">Family Housing</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(7, 'q7', 'office', '8')">Home Office / Studio</div>
+                    </div>
+                </div>
+
+                <div class="step hidden-step fade-in" data-step="8">
+                    <h2 class="text-xl font-bold mb-4">Desired Timeline?</h2>
+                    <div class="space-y-3">
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(8, 'q8', 'asap', '9')">ASAP (Ready to start)</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(8, 'q8', '3_6_months', '9')">3-6 Months</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(8, 'q8', 'budgeting', '9')">Just Budgeting</div>
+                    </div>
+                </div>
+
+                <div class="step hidden-step fade-in" data-step="9">
+                    <h2 class="text-xl font-bold mb-4">Top Priority?</h2>
+                    <div class="space-y-3">
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(9, 'q9', 'price', '10')">Lowest Price</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(9, 'q9', 'value', '10')">Best Value (Quality/Cost balance)</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(9, 'q9', 'speed', '10')">Speed & Quality</div>
+                    </div>
+                </div>
+
+                <div class="step hidden-step fade-in" data-step="10">
+                    <h2 class="text-xl font-bold mb-4">Ownership Status?</h2>
+                    <div class="space-y-3">
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(10, 'q10', 'owner', '11')">I own the property</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(10, 'q10', 'buying', '11')">In escrow / Buying</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(10, 'q10', 'researching', '11')">Researching for others</div>
+                    </div>
+                </div>
+
+                <div class="step hidden-step fade-in" data-step="11">
+                    <h2 class="text-xl font-bold mb-4">Electrical Panel Condition?</h2>
+                    <div class="space-y-3">
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(11, 'q11', 'modern', '12')">Modern (200 Amp, plenty of space)</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(11, 'q11', 'upgrade', '12')">Older (100 Amp) / Needs Upgrade</div>
+                    </div>
+                </div>
+
+                <div class="step hidden-step fade-in" data-step="12">
+                    <h2 class="text-xl font-bold mb-4">Roof Style to Match?</h2>
+                    <div class="space-y-3">
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(12, 'q12', 'shingle', '13')">Composition Shingle / Flat</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(12, 'q12', 'tile', '13')">Spanish Tile / Concrete Tile</div>
+                    </div>
+                </div>
+
+                <div class="step hidden-step fade-in" data-step="13">
+                    <h2 class="text-xl font-bold mb-4">Ceiling Preference?</h2>
+                    <div class="space-y-3">
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(13, 'q13', 'standard', '14')">Standard Flat (8-9ft)</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(13, 'q13', 'vaulted', '14')">Vaulted / Cathedral (High pitch)</div>
+                    </div>
+                </div>
+
+                <div class="step hidden-step fade-in" data-step="14">
+                    <h2 class="text-xl font-bold mb-4">Patio Door Style?</h2>
+                    <div class="space-y-3">
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(14, 'q14', 'standard', '15')">Standard Sliding / French Doors</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(14, 'q14', 'bifold', '15')">Large Bi-Fold / Stacking Doors</div>
+                    </div>
+                </div>
+
+                <div class="step hidden-step fade-in" data-step="15">
+                    <h2 class="text-xl font-bold mb-4">Heating & Cooling?</h2>
+                    <div class="space-y-3">
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(15, 'q15', 'minisplit', 'final')">Mini-Split System (Wall Mounted)</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(15, 'q15', 'central', 'final')">Central Air (Hidden Ducts)</div>
+                    </div>
+                </div>
+                
+                <div class="step hidden-step fade-in" data-step="final">
+                    <h2 class="text-3xl font-bold mb-3 text-white">Your Estimate is Ready</h2>
+                    <p class="text-slate-300 text-lg mb-8">Where should we send your official quote breakdown?</p>
+                    <div class="space-y-5">
+                        <input type="text" id="name" required placeholder="Full Name" class="w-full bg-slate-900 border border-slate-600 rounded-xl p-5 text-white placeholder-slate-400 focus:border-blue-500 outline-none text-lg">
+                        <input type="email" id="email" required placeholder="Email Address" class="w-full bg-slate-900 border border-slate-600 rounded-xl p-5 text-white placeholder-slate-400 focus:border-blue-500 outline-none text-lg">
+                        <input type="tel" id="phone" required placeholder="Phone Number" class="w-full bg-slate-900 border border-slate-600 rounded-xl p-5 text-white placeholder-slate-400 focus:border-blue-500 outline-none text-lg">
+                        <button type="button" onclick="submitQuiz()" class="w-full bg-green-600 hover:bg-green-500 text-white text-xl font-bold py-5 rounded-xl shadow-lg transform hover:scale-[1.02]">REVEAL MY PRICE &rarr;</button>
+                        <p class="text-xs text-slate-500 mt-2"><i class="fas fa-lock"></i> Your info is secure. No spam.</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        const answers = {};
+        const totalSteps = 15;
+        
+        // --- PASTE YOUR NEW GOOGLE SCRIPT URL BELOW ---
+        const WEBHOOK_URL = "REPLACE_THIS_WITH_YOUR_NEW_DEPLOYMENT_URL"; 
+
+        function startQuiz() {
+            document.getElementById('introPage').style.display = 'none';
+            document.querySelector('[data-step="1"]').classList.remove('hidden-step');
+            document.getElementById('progressContainer').classList.remove('hidden-step');
+            updateProgress(1);
+        }
+
+        function selectOption(step, key, value, nextStep) {
+            answers[key] = value;
+            setTimeout(() => {
+                document.querySelector('[data-step="'+step+'"]').classList.add('hidden-step');
+                if (nextStep !== 'final') {
+                    document.querySelector('[data-step="'+nextStep+'"]').classList.remove('hidden-step');
+                    updateProgress(parseInt(nextStep));
+                } else {
+                    document.querySelector('[data-step="final"]').classList.remove('hidden-step');
+                    updateProgress(totalSteps);
+                }
+            }, 250);
+        }
+
+        function updateProgress(step) {
+            document.getElementById('currentStepNum').innerText = step;
+            document.getElementById('progressBar').style.width = (step / totalSteps * 100) + "%";
+        }
+
+        async function submitQuiz() {
+            answers.name = document.getElementById('name').value;
+            answers.email = document.getElementById('email').value;
+            answers.phone = document.getElementById('phone').value;
+            
+            if(!answers.name || !answers.email) return alert("Please fill in required fields to see your quote.");
+
+            const btn = document.querySelector('button[onclick="submitQuiz()"]');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Calculating...';
+            btn.disabled = true;
+
+            // Send to Google Sheet (Fire and Forget)
+            try {
+                fetch(WEBHOOK_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(answers) });
+            } catch(e) {}
+
+            // Redirect to results with params
+            setTimeout(() => {
+                const params = new URLSearchParams(answers).toString();
+                window.location.href = 'quote-results.html?' + params;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
