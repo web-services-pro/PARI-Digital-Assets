@@ -96,7 +96,7 @@
         <div class="bg-gradient-to-br from-blue-900/40 to-slate-900/40 border border-blue-500/50 p-8 md:p-10 rounded-2xl text-center mt-12 shadow-2xl relative overflow-hidden group">
             <div class="absolute inset-0 bg-blue-600/5 group-hover:bg-blue-600/10 transition-colors duration-500"></div>
             <div class="relative z-10">
-                <h3 class="text-3xl md:text-4xl font-extrabold mb-4 text-white tracking-tight">Don't Let This Price Slip Away</h3>
+                <h3 class="text-3xl md:text-4xl font-extrabold mb-4 text-white tracking-tight">Does This Quote Range Align With Your Budget Expectations? Click Below to Move Forward</h3>
                 <p class="text-slate-300 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
                     Material costs fluctuate weekly and our construction calendar fills up months in advance.<br class="hidden md:block">
                     Claim your <span class="text-teal-400 font-bold">Free Site Consultation</span> today to verify your measurements and <u>get your new ADU</u>. We efficiently handle everything A-Z so you don't need to lift a finger...
@@ -111,7 +111,139 @@
     </div>
 
     <script>
-        // --- PASTE YOUR NEW GOOGLE SCRIPT URL BELOW ---
+        // --- 1. SAGO PRE-SELLING CONTENT DATA ---
+        // This object holds the "Psychological" copy based on user choices.
+        // It addresses: The Plan (Meat), Present Pain (Hell Island), and Philosophy.
+        const sagoContent = {
+            structure: {
+                "attached": {
+                    title: "The Strategic Efficiency Plan",
+                    icon: "fa-home",
+                    color: "border-blue-500",
+                    [cite_start]copy: "You made a strategic choice. Many assume they need a massive detached unit to add value, but that comes with a 'hidden tax' of trenching new utility lines. By choosing an <strong>Attached Unit</strong>, you are 'hacking' your property's value—getting rentable square footage without the headache (and price tag) of a standalone build[cite: 25]."
+                },
+                "detached": {
+                    title: "The 'Private Sanctuary' Strategy",
+                    icon: "fa-tree",
+                    color: "border-green-500",
+                    copy: "You selected a <strong>Detached Unit</strong>. This tells us you value Privacy. The 'Old Plan' is a room addition that forces you to live in a construction zone (Hell Island). [cite_start]A Detached unit keeps your main home a sanctuary while building a completely separate asset in your backyard[cite: 32]."
+                },
+                "garage_conversion": {
+                    title: "The 'Hidden Asset' Unlock",
+                    icon: "fa-warehouse",
+                    color: "border-purple-500",
+                    copy: "You are sitting on a goldmine. Most garages are just storage for clutter (The Cost of Inaction). [cite_start]By converting this existing footprint, you are bypassing major framing costs and turning 'dead space' into a high-yield monthly income stream or a suite for family[cite: 37]."
+                },
+                "default": { title: "Custom Structure Plan", icon: "fa-hard-hat", color: "border-slate-500", copy: "Based on your lot size and requirements, we have calculated a shell cost that maximizes your allowable square footage without triggering expensive civil engineering requirements." }
+            },
+            usage: {
+                "rental": {
+                    title: "From Liability to Asset",
+                    icon: "fa-chart-line",
+                    copy: "Most homeowners just pay mortgages (The Old Plan). You are looking to turn your backyard into an employee. This ADU isn't an expense; it's a <strong>wealth vehicle</strong>. [cite_start]You are moving from 'working for your house' to 'making your house work for you.'[cite: 25]."
+                },
+                "family": {
+                    title: "The Relationship Saver",
+                    icon: "fa-heart",
+                    copy: "Let’s be real about the alternative. Assisted living or renting nearby is a massive drain on Money and creates separation (Hell Island). This ADU keeps loved ones close while building an asset that belongs to <em>you</em>. [cite_start]You are trading a monthly expense for a permanent investment[cite: 31]."
+                },
+                "office": {
+                    title: "Reclaiming Your Focus",
+                    icon: "fa-laptop",
+                    copy: "Trying to work from the dining table drains your Energy and hurts your professional Reputation. This dedicated space isn't just an office; it's a boundary. [cite_start]It separates 'Home Life' from 'Work Life' (Heaven Island)[cite: 53]."
+                },
+                "default": { title: "Versatile Investment", icon: "fa-star", copy: "Whether for family or income, this addition adds immediate equity to your property, securing your financial future against market fluctuations." }
+            },
+            finishes: {
+                "standard": {
+                    title: "Philosophy: 'Standard' Means Bombproof",
+                    icon: "fa-shield-alt",
+                    copy: "I have a philosophy: <strong>Standard shouldn't mean cheap.</strong> It should mean durable. Too many contractors upsell marble that chips if you look at it wrong. [cite_start]We selected these finishes for longevity—keeping your maintenance Energy low so you aren't playing handyman every weekend[cite: 21]."
+                },
+                "mid_range": {
+                    title: "The 'Sweet Spot' Balance",
+                    icon: "fa-layer-group",
+                    copy: "You chose the smart middle ground. You get the aesthetic upgrades that drive rental premiums (Quartz counters, LVP flooring) without diminishing returns. This is the investor's favorite tier."
+                },
+                "high_end": {
+                    title: "The 'Pride of Ownership' Upgrade",
+                    icon: "fa-gem",
+                    copy: "You’ve chosen premium finishes. This isn't just about looks; it's about <strong>Identity and Reputation</strong>. When someone walks in, the space feels substantial. [cite_start]High-end finishes signal value immediately, attracting better tenants or making family feel like royalty, not guests[cite: 21]."
+                }
+            }
+        };
+
+        // --- 2. SAGO RENDER LOGIC ---
+        function renderSagoBreakdown(inputs) {
+            // Helper to clean inputs
+            const type = (inputs.q1 || 'detached').toLowerCase();
+            const goal = (inputs.q_goal || 'default').toLowerCase(); // Assuming q_goal exists, else default
+            const finish = (inputs.q3 || 'standard').toLowerCase();
+            const sqft = inputs.q2 || 600;
+
+            // Get Data
+            const sType = sagoContent.structure[type] || sagoContent.structure['default'];
+            const sUsage = sagoContent.usage[goal] || sagoContent.usage['default'];
+            const sFinish = sagoContent.finishes[finish] || sagoContent.finishes['standard'];
+
+            // Build HTML
+            return `
+                <div class="glass-panel rounded-xl overflow-hidden border-l-4 ${sType.color} transition-all hover:-translate-y-1 duration-300">
+                    <div class="bg-slate-800/50 p-4 border-b border-slate-700 flex items-center gap-3">
+                        <div class="bg-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-white">
+                            <i class="fas ${sType.icon}"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-lg">${sType.title}</h3>
+                            <p class="text-xs text-slate-400 uppercase tracking-wider">Based on ${sqft} sq. ft. ${type.replace('_',' ')}</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-slate-300 leading-relaxed text-sm">${sType.copy}</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-xl overflow-hidden border-l-4 border-yellow-500 transition-all hover:-translate-y-1 duration-300">
+                    <div class="bg-slate-800/50 p-4 border-b border-slate-700 flex items-center gap-3">
+                        <div class="bg-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-yellow-400">
+                            <i class="fas ${sUsage.icon}"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-lg">${sUsage.title}</h3>
+                            <p class="text-xs text-slate-400 uppercase tracking-wider">Project Goal</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-slate-300 leading-relaxed text-sm">${sUsage.copy}</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-xl overflow-hidden border-l-4 border-teal-500 transition-all hover:-translate-y-1 duration-300">
+                    <div class="bg-slate-800/50 p-4 border-b border-slate-700 flex items-center gap-3">
+                        <div class="bg-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-teal-400">
+                            <i class="fas ${sFinish.icon}"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-lg">${sFinish.title}</h3>
+                            <p class="text-xs text-slate-400 uppercase tracking-wider">${finish.replace('_',' ')} Level</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-slate-300 leading-relaxed text-sm">${sFinish.copy}</p>
+                    </div>
+                </div>
+
+                <div class="bg-amber-900/20 border border-amber-600/30 rounded-xl p-6 relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 text-amber-500/10 text-9xl"><i class="fas fa-clock"></i></div>
+                    <h4 class="text-amber-400 font-bold text-lg mb-2"><i class="fas fa-exclamation-triangle mr-2"></i>The 'Red Tape' Shark</h4>
+                    <p class="text-amber-100/80 text-sm relative z-10">
+                        The "Old Plan" is to wait months to start. Here is the Shark: <strong>Permitting Delays</strong>. Every month you wait, code changes can increase costs by 5-10%. We use pre-approved specs to cut that red tape. This quote assumes we start the paperwork <em>now</em> to lock in 2026 pricing.
+                    </p>
+                </div>
+            `;
+        }
+        
+        // --- 3. STANDARD CALCULATION LOGIC ---
         const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzlz4UXQz_lZeAa8X1zwq4HsHNPAYPKDQ8aF3HaMVfbms9KIy-dnmhGU-wfTH0mAcaQ/exec";
 
         const params = new URLSearchParams(window.location.search);
@@ -210,20 +342,7 @@
             
             // Build Breakdown HTML
             const breakdown = document.getElementById('breakdown');
-            breakdown.innerHTML = `
-                <div class="glass-panel p-6 rounded-xl border-l-4 border-slate-600">
-                    <h4 class="font-bold text-lg text-white mb-1">Base Structure</h4>
-                    <p class="text-slate-300 text-sm">Based on ${sqft} sqft ${aduType.replace('_',' ')}</p>
-                </div>
-                <div class="glass-panel p-6 rounded-xl border-l-4 border-slate-600">
-                    <h4 class="font-bold text-lg text-white mb-1">Finishes</h4>
-                    <p class="text-slate-300 text-sm">${finishLevel.replace('_',' ')} selection</p>
-                </div>
-                 <div class="glass-panel p-6 rounded-xl border-l-4 border-slate-600">
-                    <h4 class="font-bold text-lg text-white mb-1">Selections & Upgrades</h4>
-                    <p class="text-slate-300 text-sm">Includes: ${roofing} roof, ${hvac}, ${electrical} panel</p>
-                </div>
-            `;
+            breakdown.innerHTML = renderSagoBreakdown(inputs);
         }
     </script>
 </body>
