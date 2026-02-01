@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your 2026 ADU Estimate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>body { background-color: #020617; font-family: 'Inter', sans-serif; color: #f8fafc; } .glass-panel { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(71, 85, 105, 0.6); }</style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+    <div class="max-w-3xl mx-auto">
+        
+        <div class="text-center mb-10">
+            <img src="images/logo-SAMS-Constr-Logo.jpg" alt="SAMS Construction Group" class="h-20 mx-auto mb-6 object-contain">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4 text-white">Your 2026 Project Estimate</h1>
+            <p class="text-slate-400 text-lg">Real-time estimate based on Los Angeles market data.</p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-700 rounded-2xl p-8 mb-12 text-center relative overflow-hidden shadow-2xl">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+            
+            <div id="loadingPrice" class="py-4">
+                <i class="fas fa-circle-notch fa-spin text-4xl text-blue-500"></i>
+                <p class="text-slate-400 mt-2">Fetching current material prices...</p>
+            </div>
+
+            <div id="priceDisplay" class="hidden">
+                <div class="flex justify-center items-center gap-2 mb-2 flex-wrap">
+                    <span class="text-5xl md:text-6xl font-black text-green-400 tracking-tight">$<span id="lowPrice">0</span></span>
+                    <span class="text-2xl text-slate-500 font-bold">-</span>
+                    <span class="text-5xl md:text-6xl font-black text-green-400 tracking-tight">$<span id="highPrice">0</span></span>
+                </div>
+                <p class="text-sm text-slate-400 uppercase tracking-wide font-medium">Total Estimated Investment</p>
+            </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-white mb-6 pl-3 border-l-4 border-blue-500">Our Recent Projects</h2>
+        <div class="relative w-full max-w-4xl mx-auto mb-12 overflow-hidden rounded-xl border border-slate-700 shadow-2xl">
+            <div class="flex transition-transform duration-500" id="portfolioTrack">
+                <div class="min-w-full"><img src="images/portfolio-0-Calabasas.webp" class="w-full h-[400px] object-cover"></div>
+                <div class="min-w-full"><img src="images/portfolio-1-WhatsApp-Image-2026-01-23-at-5.17.45-PM-(1).jpeg" class="w-full h-[400px] object-cover"></div>
+                <div class="min-w-full"><img src="images/portfolio-2-WhatsApp-Image-2026-01-23-at-5.17.45-PM.jpeg" class="w-full h-[400px] object-cover"></div>
+                <div class="min-w-full"><img src="images/portfolio-3-WhatsApp-Image-2026-01-23-at-5.17.46-PM-(2).jpeg" class="w-full h-[400px] object-cover"></div>
+                <div class="min-w-full"><img src="images/portfolio-10-WhatsApp-Image-2026-01-23-at-5.19.08-PM.jpeg" class="w-full h-[400px] object-cover"></div>
+            </div>
+            <button onclick="moveSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 p-3 rounded-full text-white hover:bg-black/80">❮</button>
+            <button onclick="moveSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 p-3 rounded-full text-white hover:bg-black/80">❯</button>
+        </div>
+        <script>
+            let slideIndex = 0;
+            const track = document.getElementById('portfolioTrack');
+            // Update this count if you add more portfolio images
+            const count = 5; 
+            function moveSlide(n) {
+                slideIndex = (slideIndex + n + count) % count;
+                track.style.transform = 'translateX(-' + (slideIndex * 100) + '%)';
+            }
+        </script>
+
+        <h2 class="text-2xl font-bold text-white mb-6 pl-3 border-l-4 border-blue-500">Quote Range Breakdown</h2>
+        <div id="breakdown" class="space-y-4 mb-12"></div>
+
+        <h2 class="text-2xl font-bold text-white mb-6 pl-3 border-l-4 border-yellow-500">What Others Are Saying</h2>
+        <div class="relative w-full max-w-4xl mx-auto mb-12 overflow-hidden rounded-xl border border-slate-700 shadow-2xl group">
+            <div class="flex transition-transform duration-500" id="testimonialTrack">
+                <div class="min-w-full"><img src="images/review-0-SAMS-Review3.png" class="w-full h-[300px] object-contain bg-slate-900"></div>
+                <div class="min-w-full"><img src="images/review-1-SAMS-Review2.png" class="w-full h-[300px] object-contain bg-slate-900"></div>
+                <div class="min-w-full"><img src="images/review-2-SAMS-Review1.png" class="w-full h-[300px] object-contain bg-slate-900"></div>
+            </div>
+            <button onclick="moveTestimonial(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 p-3 rounded-full text-white hover:bg-black/80">❮</button>
+            <button onclick="moveTestimonial(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 p-3 rounded-full text-white hover:bg-black/80">❯</button>
+        </div>
+        <script>
+            let testIndex = 0;
+            const tTrack = document.getElementById('testimonialTrack');
+            const tCount = 3;
+            function moveTestimonial(n) {
+                testIndex = (testIndex + n + tCount) % tCount;
+                tTrack.style.transform = 'translateX(-' + (testIndex * 100) + '%)';
+            }
+        </script>
+
+        <h2 class="text-2xl font-bold text-white mb-6 pl-3 border-l-4 border-teal-500">Frequently Asked Questions</h2>
+        <div class="space-y-4 mb-12">
+            <div class="glass-panel p-6 rounded-xl border border-slate-700">
+                <h4 class="font-bold text-white text-lg mb-2"><i class="far fa-question-circle text-teal-400 mr-2"></i>What warranties or guarantees do you offer?</h4>
+                <p class="text-slate-300 text-sm leading-relaxed">We stand behind our craftsmanship with a full 1-year warranty on all work performed, giving you peace of mind that your project is built to last.</p>
+            </div>
+            <div class="glass-panel p-6 rounded-xl border border-slate-700">
+                <h4 class="font-bold text-white text-lg mb-2"><i class="far fa-question-circle text-teal-400 mr-2"></i>Do you offer financing?</h4>
+                <p class="text-slate-300 text-sm leading-relaxed">Yes! We offer 0% financing for up to 12 months on approved credit (OAC). We also offer flexible payment plans tailored to project milestones.</p>
+            </div>
+            <div class="glass-panel p-6 rounded-xl border border-slate-700">
+                <h4 class="font-bold text-white text-lg mb-2"><i class="far fa-question-circle text-teal-400 mr-2"></i>Why choose SAMS Construction?</h4>
+                <p class="text-slate-300 text-sm leading-relaxed">Clients choose us for high-quality workmanship and speed. We pride ourselves on very fast completion times without cutting corners.</p>
+            </div>
+            <div class="glass-panel p-6 rounded-xl border border-slate-700">
+                <h4 class="font-bold text-white text-lg mb-2"><i class="far fa-question-circle text-teal-400 mr-2"></i>Any current specials?</h4>
+                <p class="text-slate-300 text-sm leading-relaxed">Yes! Estimates are free. We currently offer <strong>$2,500 OFF full kitchen remodels</strong> and <strong>$1,000 OFF full bathroom remodels</strong>. ADU clients get <strong>FREE kitchen cabinets</strong> if signed within 30 days.</p>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-br from-blue-900/40 to-slate-900/40 border border-blue-500/50 p-8 md:p-10 rounded-2xl text-center mt-12 shadow-2xl relative overflow-hidden group">
+            <div class="absolute inset-0 bg-blue-600/5 group-hover:bg-blue-600/10 transition-colors duration-500"></div>
+            <div class="relative z-10">
+                <h3 class="text-3xl md:text-4xl font-extrabold mb-4 text-white tracking-tight">Don't Let This Price Slip Away</h3>
+                <p class="text-slate-300 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
+                    Material costs fluctuate weekly and our construction calendar fills up months in advance.<br class="hidden md:block">
+                    Claim your <span class="text-teal-400 font-bold">Free Site Consultation</span> today to verify your measurements and <u>lock in this price range</u>.
+                </p>
+                <a href="https://www.calendly.com" target="_blank" class="inline-flex items-center gap-3 bg-green-600 hover:bg-green-500 text-white text-xl font-bold py-5 px-12 rounded-xl transition-all shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transform hover:-translate-y-1">
+                    <span>Book My Free Site Visit</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <p class="mt-6 text-xs text-slate-500 uppercase tracking-widest font-semibold"><i class="fas fa-lock text-slate-600 mr-1"></i> No Obligation • 100% Free • Secure Your Spot</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- PASTE YOUR NEW GOOGLE SCRIPT URL BELOW ---
+        const WEBHOOK_URL = "REPLACE_THIS_WITH_YOUR_NEW_DEPLOYMENT_URL";
+
+        const params = new URLSearchParams(window.location.search);
+        const inputs = Object.fromEntries(params.entries());
+
+        // DEFAULT PRICING (Fallback)
+        let PRICING = {
+            base_sqft_garage: 225, base_sqft_attached: 310, base_sqft_detached: 350,
+            finish_mid_markup: 1.15, finish_high_markup: 1.35,
+            site_slope_flat: 0, site_slope_mod: 12000, site_demo: 6500,
+            util_tie_in: 2500, util_new_lines: 12500,
+            panel_upgrade: 4200, roof_tile_sqft: 14, ceil_vault_sqft: 18,
+            door_bifold: 9500, hvac_central: 6500, plans_soft_cost: 7500, permit_fees: 5500
+        };
+
+        // LOAD REAL-TIME PRICING THEN CALCULATE
+        window.onload = function() {
+            fetch(WEBHOOK_URL + "?type=pricing")
+                .then(res => res.json())
+                .then(data => {
+                    if(!data.error) PRICING = { ...PRICING, ...data };
+                    calculateQuote();
+                })
+                .catch(e => {
+                    console.log("Using offline pricing");
+                    calculateQuote();
+                });
+        };
+
+        function calculateQuote() {
+            // 1. BASE VARIABLES
+            const aduType = inputs.q1 || 'detached';
+            const sqft = parseInt(inputs.q2) || 600;
+            const finishLevel = inputs.q3 || 'standard';
+            const siteCondition = inputs.q4 || 'flat_access';
+            const utilities = inputs.q5 || 'tie_in';
+            const hasPlans = inputs.q6 || 'needs_design';
+            
+            // New Vars
+            const electrical = inputs.q11 || 'modern';
+            const roofing = inputs.q12 || 'shingle';
+            const ceiling = inputs.q13 || 'standard';
+            const doors = inputs.q14 || 'standard';
+            const hvac = inputs.q15 || 'minisplit';
+
+            // 2. SHELL COST
+            let baseRate = PRICING.base_sqft_detached;
+            if (aduType === 'garage_conversion') baseRate = PRICING.base_sqft_garage;
+            if (aduType === 'attached') baseRate = PRICING.base_sqft_attached;
+            
+            let constructionLow = sqft * baseRate;
+            let constructionHigh = sqft * (baseRate * 1.15); // Shell range
+
+            // 3. FINISH LEVEL
+            if (finishLevel === 'mid_range') { 
+                constructionLow *= PRICING.finish_mid_markup; 
+                constructionHigh *= PRICING.finish_mid_markup; 
+            }
+            if (finishLevel === 'high_end') { 
+                constructionLow *= PRICING.finish_high_markup; 
+                constructionHigh *= PRICING.finish_high_markup; 
+            }
+
+            // 4. LINE ITEM ADD-ONS
+            if (siteCondition === 'sloped_mod') { constructionLow += parseInt(PRICING.site_slope_mod); constructionHigh += (PRICING.site_slope_mod * 1.2); }
+            if (siteCondition === 'demo') { constructionLow += parseInt(PRICING.site_demo); constructionHigh += (PRICING.site_demo * 1.2); }
+            
+            if (utilities === 'new_lines') { constructionLow += parseInt(PRICING.util_new_lines); constructionHigh += (PRICING.util_new_lines * 1.2); }
+            else { constructionLow += parseInt(PRICING.util_tie_in); constructionHigh += (PRICING.util_tie_in * 1.2); }
+
+            if (electrical === 'upgrade') { constructionLow += parseInt(PRICING.panel_upgrade); constructionHigh += (PRICING.panel_upgrade * 1.1); }
+            
+            if (roofing === 'tile') { constructionLow += (sqft * PRICING.roof_tile_sqft); constructionHigh += (sqft * PRICING.roof_tile_sqft * 1.1); }
+            
+            if (ceiling === 'vaulted') { constructionLow += (sqft * PRICING.ceil_vault_sqft); constructionHigh += (sqft * PRICING.ceil_vault_sqft * 1.1); }
+            
+            if (doors === 'bifold') { constructionLow += parseInt(PRICING.door_bifold); constructionHigh += (PRICING.door_bifold * 1.2); }
+            
+            if (hvac === 'central') { constructionLow += parseInt(PRICING.hvac_central); constructionHigh += (PRICING.hvac_central * 1.2); }
+
+            // 5. SOFT COSTS
+            let plans = (hasPlans === 'needs_design') ? parseInt(PRICING.plans_soft_cost) : 0;
+            let permits = parseInt(PRICING.permit_fees);
+
+            let totalLow = constructionLow + plans + permits;
+            let totalHigh = constructionHigh + plans + permits;
+
+            // 6. DISPLAY
+            const low = Math.round(totalLow / 1000) * 1000;
+            const high = Math.round(totalHigh / 1000) * 1000;
+
+            document.getElementById('loadingPrice').style.display = 'none';
+            document.getElementById('priceDisplay').classList.remove('hidden');
+            document.getElementById('lowPrice').innerText = low.toLocaleString();
+            document.getElementById('highPrice').innerText = high.toLocaleString();
+            
+            // Build Breakdown HTML
+            const breakdown = document.getElementById('breakdown');
+            breakdown.innerHTML = `
+                <div class="glass-panel p-6 rounded-xl border-l-4 border-slate-600">
+                    <h4 class="font-bold text-lg text-white mb-1">Base Structure</h4>
+                    <p class="text-slate-300 text-sm">Based on ${sqft} sqft ${aduType.replace('_',' ')}</p>
+                </div>
+                <div class="glass-panel p-6 rounded-xl border-l-4 border-slate-600">
+                    <h4 class="font-bold text-lg text-white mb-1">Finishes</h4>
+                    <p class="text-slate-300 text-sm">${finishLevel.replace('_',' ')} selection</p>
+                </div>
+                 <div class="glass-panel p-6 rounded-xl border-l-4 border-slate-600">
+                    <h4 class="font-bold text-lg text-white mb-1">Selections & Upgrades</h4>
+                    <p class="text-slate-300 text-sm">Includes: ${roofing} roof, ${hvac}, ${electrical} panel</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
