@@ -41,8 +41,8 @@
             <form id="quizForm">
                 <div id="introPage" class="text-center fade-in">
                     <span class="inline-block py-1 px-4 rounded-full bg-blue-500/20 border border-blue-400 text-blue-300 text-sm font-bold mb-6">● Updated for 2026 Pricing</span>
-                    <h1 class="text-3xl md:text-4xl font-extrabold mb-4 text-white">Get Your Official ADU Quote</h1>
-                    <p class="text-slate-300 text-lg mb-8">Materials. Labor. Permits. Get a real-time estimate based on current Los Angeles construction data.</p>
+                    <h1 class="text-3xl md:text-4xl font-extrabold mb-4 text-white">Get Your ADU Quote Estimate Range</h1>
+                    <p class="text-slate-300 text-lg mb-8">Answer a few questions to get a price range for your ADU Project in under 2 minutes, based on current Los Angeles construction data.</p>
                     <button type="button" onclick="startQuiz()" class="w-full bg-blue-600 hover:bg-blue-500 text-white text-xl font-bold py-5 rounded-xl shadow-lg transform hover:scale-[1.02]">Start Free Estimate &rarr;</button>
                 </div>
         
@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="step hidden-step fade-in" data-step="2">
-                    <h2 class="text-xl font-bold mb-4">Approximate Square Footage?</h2>
+                    <h2 class="text-xl font-bold mb-4">Approximate Square Footage of your planned ADU?</h2>
                     <div class="space-y-3">
                         <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(2, 'q2', '400', '3')">Studio (Approx 400 sq ft)</div>
                         <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(2, 'q2', '600', '3')">1 Bedroom (Approx 600 sq ft)</div>
@@ -66,20 +66,20 @@
                 </div>
 
                 <div class="step hidden-step fade-in" data-step="3">
-                    <h2 class="text-xl font-bold mb-4">Finish Level Desired?</h2>
+                    <h2 class="text-xl font-bold mb-4">Which level of finishes are you considering?</h2>
                     <div class="space-y-3">
-                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(3, 'q3', 'standard', '4')">Standard (Cost-effective, LVP floors, simple trim)</div>
-                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(3, 'q3', 'mid_range', '4')">Mid-Range (Quartz counters, tile showers, upgraded appliances)</div>
-                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(3, 'q3', 'high_end', '4')">Luxury (Custom cabinets, hardwood, premium fixtures)</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(3, 'q3', 'standard', '4')">Standard Builder-Grade (Cost-Effective, Functional & Durable)</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(3, 'q3', 'mid_range', '4')">Mid-Range (Upgraded Fixtures, Finishes, & Appliances)</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(3, 'q3', 'high_end', '4')">Luxury High-End (Premium Materials & Custom Details)</div>
                     </div>
                 </div>
 
                 <div class="step hidden-step fade-in" data-step="4">
-                    <h2 class="text-xl font-bold mb-4">Describe the Construction Site</h2>
+                    <h2 class="text-xl font-bold mb-4">Describe the Property's Site Condition and Access</h2>
                     <div class="space-y-3">
-                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(4, 'q4', 'flat_access', '5')">Flat yard with easy access</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(4, 'q4', 'flat_access', '5')">Flat lot with easy access</div>
                         <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(4, 'q4', 'sloped_mod', '5')">Moderate Slope / Narrow Access</div>
-                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(4, 'q4', 'demo', '5')">Requires Demolition of old shed/garage first</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(4, 'q4', 'demo', '5')">Requires Demolition / Difficult (Steep Slope, Major Prep Needed)</div>
                     </div>
                 </div>
 
@@ -92,7 +92,7 @@
                 </div>
 
                 <div class="step hidden-step fade-in" data-step="6">
-                    <h2 class="text-xl font-bold mb-4">Do you have plans?</h2>
+                    <h2 class="text-xl font-bold mb-4">Do you have plans in place already?</h2>
                     <div class="space-y-3">
                         <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(6, 'q6', 'plans_ready', '7')">Yes, approved and ready</div>
                         <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(6, 'q6', 'needs_design', '7')">No, I need Design & Permitting services</div>
@@ -100,11 +100,11 @@
                 </div>
 
                 <div class="step hidden-step fade-in" data-step="7">
-                    <h2 class="text-xl font-bold mb-4">Primary Goal?</h2>
+                    <h2 class="text-xl font-bold mb-4">Primary Motivation?</h2>
                     <div class="space-y-3">
-                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(7, 'q7', 'rental', '8')">Rental Income</div>
-                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(7, 'q7', 'family', '8')">Family Housing</div>
-                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(7, 'q7', 'office', '8')">Home Office / Studio</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(7, 'q7', 'rental', '8')">Generate Rental Income</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(7, 'q7', 'family', '8')">Housing for Family/In-Laws</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(7, 'q7', 'office', '8')">Home Office / Personal Flex-Space</div>
                     </div>
                 </div>
 
@@ -112,8 +112,8 @@
                     <h2 class="text-xl font-bold mb-4">Desired Timeline?</h2>
                     <div class="space-y-3">
                         <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(8, 'q8', 'asap', '9')">ASAP (Ready to start)</div>
-                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(8, 'q8', '3_6_months', '9')">3-6 Months</div>
-                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(8, 'q8', 'budgeting', '9')">Just Budgeting</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(8, 'q8', '3_6_months', '9')">Within 1-3 Months</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(8, 'q8', 'budgeting', '9')">Over 3+ Months From Now / Just Budgeting</div>
                     </div>
                 </div>
 
@@ -129,9 +129,9 @@
                 <div class="step hidden-step fade-in" data-step="10">
                     <h2 class="text-xl font-bold mb-4">Ownership Status?</h2>
                     <div class="space-y-3">
-                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(10, 'q10', 'owner', '11')">I own the property</div>
-                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(10, 'q10', 'buying', '11')">In escrow / Buying</div>
-                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(10, 'q10', 'researching', '11')">Researching for others</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(10, 'q10', 'owner', '11')">Yes, I own the property and make all decisions</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(10, 'q10', 'buying', '11')">Yes, but I make decisions with spouse/partner</div>
+                        <div class="p-4 border border-slate-600 rounded-lg cursor-pointer hover:bg-slate-800" onclick="selectOption(10, 'q10', 'researching', '11')">No, Researching for others</div>
                     </div>
                 </div>
 
@@ -177,7 +177,7 @@
                 
                 <div class="step hidden-step fade-in" data-step="final">
                     <h2 class="text-3xl font-bold mb-3 text-white">Your Estimate is Ready</h2>
-                    <p class="text-slate-300 text-lg mb-8">Where should we send your official quote breakdown?</p>
+                    <p class="text-slate-300 text-lg mb-8">Where should we send your estimate range breakdown?</p>
                     <div class="space-y-5">
                         <input type="text" id="name" required placeholder="Full Name" class="w-full bg-slate-900 border border-slate-600 rounded-xl p-5 text-white placeholder-slate-400 focus:border-blue-500 outline-none text-lg">
                         <input type="email" id="email" required placeholder="Email Address" class="w-full bg-slate-900 border border-slate-600 rounded-xl p-5 text-white placeholder-slate-400 focus:border-blue-500 outline-none text-lg">
