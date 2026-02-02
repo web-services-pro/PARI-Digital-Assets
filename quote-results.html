@@ -6,7 +6,12 @@
     <title>Your 2026 ADU Quote Estimate Range - SAMS Construction Group LLC</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>body { background-color: #020617; font-family: 'Inter', sans-serif; color: #f8fafc; } .glass-panel { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(71, 85, 105, 0.6); }</style>
+    <style>
+        body { background-color: #020617; font-family: 'Inter', sans-serif; color: #f8fafc; } 
+        .glass-panel { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(71, 85, 105, 0.6); }
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
 </head>
 <body class="min-h-screen p-4 md:p-8">
     <div class="max-w-3xl mx-auto">
@@ -22,10 +27,10 @@
             
             <div id="loadingPrice" class="py-4">
                 <i class="fas fa-circle-notch fa-spin text-4xl text-blue-500"></i>
-                <p class="text-slate-400 mt-2">Based on current pricing for ADU's (Additional Dwelling Units)</p>
+                <p class="text-slate-400 mt-2">Calculating Estimate...</p>
             </div>
 
-            <div id="priceDisplay" class="hidden">
+            <div id="priceDisplay" class="hidden fade-in">
                 <div class="flex justify-center items-center gap-2 mb-2 flex-wrap">
                     <span class="text-5xl md:text-6xl font-black text-green-400 tracking-tight">$<span id="lowPrice">0</span></span>
                     <span class="text-2xl text-slate-500 font-bold">-</span>
@@ -35,8 +40,9 @@
             </div>
         </div>
 
-        <h2 class="text-2xl font-bold text-white mb-6 pl-3 border-l-4 border-blue-500">Quote Range Breakdown</h2>
-        <div id="breakdown" class="space-y-4 mb-12"></div>
+        <h2 class="text-2xl font-bold text-white mb-6 pl-3 border-l-4 border-blue-500">Detailed Project Breakdown</h2>
+        <div id="breakdown" class="space-y-4 mb-12">
+            </div>
 
         <h2 class="text-2xl font-bold text-white mb-6 pl-3 border-l-4 border-yellow-500">What Others Are Saying</h2>
         <div class="relative w-full max-w-4xl mx-auto mb-12 overflow-hidden rounded-xl border border-slate-700 shadow-2xl group">
@@ -58,7 +64,8 @@
             }
         </script>
 
-        <h2 class="text-2xl font-bold text-white mb-6 pl-3 border-l-4 border-blue-500">Check Out Our Recent Work!</h2><div class="relative w-full max-w-4xl mx-auto mb-12 overflow-hidden rounded-xl border border-slate-700 shadow-2xl">
+        <h2 class="text-2xl font-bold text-white mb-6 pl-3 border-l-4 border-blue-500">Check Out Our Recent Work!</h2>
+        <div class="relative w-full max-w-4xl mx-auto mb-12 overflow-hidden rounded-xl border border-slate-700 shadow-2xl">
             <div class="flex transition-transform duration-500" id="portfolioTrack"><div class="min-w-full"><img src="images/portfolio-0-Calabasas.webp" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-1-WhatsApp-Image-2026-01-23-at-5.17.45-PM-(1).jpeg" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-2-WhatsApp-Image-2026-01-23-at-5.17.45-PM.jpeg" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-3-WhatsApp-Image-2026-01-23-at-5.17.46-PM-(2).jpeg" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-4-WhatsApp-Image-2026-01-23-at-5.18.40-PM-(3).jpeg" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-5-WhatsApp-Image-2026-01-23-at-5.18.40-PM-(8).jpeg" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-6-WhatsApp-Image-2026-01-23-at-5.19.07-PM-(3).jpeg" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-7-WhatsApp-Image-2026-01-23-at-5.19.07-PM-(7).jpeg" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-8-WhatsApp-Image-2026-01-23-at-5.19.08-PM-(2).jpeg" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-9-WhatsApp-Image-2026-01-23-at-5.19.08-PM-(4).jpeg" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-10-WhatsApp-Image-2026-01-23-at-5.19.08-PM.jpeg" class="w-full h-[400px] object-cover"></div><div class="min-w-full"><img src="images/portfolio-11-WhatsApp-Image-2026-01-23-at-5.19.25-PM.jpeg" class="w-full h-[400px] object-cover"></div></div>
             <button onclick="moveSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 p-3 rounded-full text-white hover:bg-black/80">❮</button>
             <button onclick="moveSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 p-3 rounded-full text-white hover:bg-black/80">❯</button>
@@ -72,7 +79,7 @@
                 track.style.transform = 'translateX(-' + (slideIndex * 100) + '%)';
             }
         </script>
-                
+
         <h2 class="text-2xl font-bold text-white mb-6 pl-3 border-l-4 border-teal-500">Frequently Asked Questions</h2>
         <div class="space-y-4 mb-12">
             <div class="glass-panel p-6 rounded-xl border border-slate-700">
@@ -96,13 +103,25 @@
         <div class="bg-gradient-to-br from-blue-900/40 to-slate-900/40 border border-blue-500/50 p-8 md:p-10 rounded-2xl text-center mt-12 shadow-2xl relative overflow-hidden group">
             <div class="absolute inset-0 bg-blue-600/5 group-hover:bg-blue-600/10 transition-colors duration-500"></div>
             <div class="relative z-10">
-                <h3 class="text-3xl md:text-4xl font-extrabold mb-4 text-white tracking-tight">Does This Quote Range Align With Your Budget Expectations? Click Below to Move Forward</h3>
+                <h3 class="text-3xl md:text-4xl font-extrabold mb-4 text-white tracking-tight">Ready to Get Your Official ADU Estimate? Let's Lock In Your Numbers</h3>
+                <p class="text-slate-300 mb-6 text-lg leading-relaxed max-w-2xl mx-auto">
+                    Great news! Your preliminary quote range gives you a solid starting point.
+                </p>
+                <p class="text-slate-300 mb-6 text-lg leading-relaxed max-w-2xl mx-auto">
+                    Now let's get precise. During your free onsite consultation, we'll:<br>
+                    <span class="inline-block mt-3 text-left max-w-xl mx-auto">
+                        ✓ Verify exact measurements for your property<br>
+                        ✓ Identify potential cost savings you might have missed<br>
+                        ✓ Lock in current material pricing (before the next price fluctuation)<br>
+                        ✓ Create your official ADU estimate
+                    </span>
+                </p>
                 <p class="text-slate-300 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
-                    Material costs fluctuate weekly and our construction calendar fills up months in advance.<br class="hidden md:block">
-                    Claim your <span class="text-teal-400 font-bold">Free Site Consultation</span> today to verify your measurements and <u>get your new ADU</u>. We efficiently handle everything A-Z so you don't need to lift a finger...
+                    <span class="text-teal-400 font-bold">Why book now?</span> Material costs change weekly and our calendar fills 4-6 weeks out. The sooner we measure, the sooner you can move forward with confidence.<br class="hidden md:block">
+                    <span class="text-slate-400 italic mt-2 inline-block">Zero obligation. Zero pressure. Just accurate numbers you can trust.</span>
                 </p>
                 <a href="https://calendar.app.google/oDBvCkubBHPgbsZc7" target="_blank" class="inline-flex items-center gap-3 bg-green-600 hover:bg-green-500 text-white text-xl font-bold py-5 px-12 rounded-xl transition-all shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transform hover:-translate-y-1">
-                    <span>Book My Free Onsite Estimate</span>
+                    <span>Schedule My Official Estimate</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
                 <p class="mt-6 text-xs text-slate-500 uppercase tracking-widest font-semibold"><i class="fas fa-lock text-slate-600 mr-1"></i> No Obligation • 100% Free • Secure Your Spot</p>
@@ -111,238 +130,193 @@
     </div>
 
     <script>
-        // --- 1. SAGO PRE-SELLING CONTENT DATA ---
-        // This object holds the "Psychological" copy based on user choices.
-        // It addresses: The Plan (Meat), Present Pain (Hell Island), and Philosophy.
-        const sagoContent = {
-            structure: {
-                "attached": {
-                    title: "The Strategic Efficiency Plan",
-                    icon: "fa-home",
-                    color: "border-blue-500",
-                    [cite_start]copy: "You made a strategic choice. Many assume they need a massive detached unit to add value, but that comes with a 'hidden tax' of trenching new utility lines. By choosing an <strong>Attached Unit</strong>, you are 'hacking' your property's value—getting rentable square footage without the headache (and price tag) of a standalone build[cite: 25]."
-                },
-                "detached": {
-                    title: "The 'Private Sanctuary' Strategy",
-                    icon: "fa-tree",
-                    color: "border-green-500",
-                    copy: "You selected a <strong>Detached Unit</strong>. This tells us you value Privacy. The 'Old Plan' is a room addition that forces you to live in a construction zone (Hell Island). [cite_start]A Detached unit keeps your main home a sanctuary while building a completely separate asset in your backyard[cite: 32]."
-                },
-                "garage_conversion": {
-                    title: "The 'Hidden Asset' Unlock",
-                    icon: "fa-warehouse",
-                    color: "border-purple-500",
-                    copy: "You are sitting on a goldmine. Most garages are just storage for clutter (The Cost of Inaction). [cite_start]By converting this existing footprint, you are bypassing major framing costs and turning 'dead space' into a high-yield monthly income stream or a suite for family[cite: 37]."
-                },
-                "default": { title: "Custom Structure Plan", icon: "fa-hard-hat", color: "border-slate-500", copy: "Based on your lot size and requirements, we have calculated a shell cost that maximizes your allowable square footage without triggering expensive civil engineering requirements." }
-            },
-            usage: {
-                "rental": {
-                    title: "From Liability to Asset",
-                    icon: "fa-chart-line",
-                    copy: "Most homeowners just pay mortgages (The Old Plan). You are looking to turn your backyard into an employee. This ADU isn't an expense; it's a <strong>wealth vehicle</strong>. [cite_start]You are moving from 'working for your house' to 'making your house work for you.'[cite: 25]."
-                },
-                "family": {
-                    title: "The Relationship Saver",
-                    icon: "fa-heart",
-                    copy: "Let’s be real about the alternative. Assisted living or renting nearby is a massive drain on Money and creates separation (Hell Island). This ADU keeps loved ones close while building an asset that belongs to <em>you</em>. [cite_start]You are trading a monthly expense for a permanent investment[cite: 31]."
-                },
-                "office": {
-                    title: "Reclaiming Your Focus",
-                    icon: "fa-laptop",
-                    copy: "Trying to work from the dining table drains your Energy and hurts your professional Reputation. This dedicated space isn't just an office; it's a boundary. [cite_start]It separates 'Home Life' from 'Work Life' (Heaven Island)[cite: 53]."
-                },
-                "default": { title: "Versatile Investment", icon: "fa-star", copy: "Whether for family or income, this addition adds immediate equity to your property, securing your financial future against market fluctuations." }
-            },
-            finishes: {
-                "standard": {
-                    title: "Philosophy: 'Standard' Means Bombproof",
-                    icon: "fa-shield-alt",
-                    copy: "I have a philosophy: <strong>Standard shouldn't mean cheap.</strong> It should mean durable. Too many contractors upsell marble that chips if you look at it wrong. [cite_start]We selected these finishes for longevity—keeping your maintenance Energy low so you aren't playing handyman every weekend[cite: 21]."
-                },
-                "mid_range": {
-                    title: "The 'Sweet Spot' Balance",
-                    icon: "fa-layer-group",
-                    copy: "You chose the smart middle ground. You get the aesthetic upgrades that drive rental premiums (Quartz counters, LVP flooring) without diminishing returns. This is the investor's favorite tier."
-                },
-                "high_end": {
-                    title: "The 'Pride of Ownership' Upgrade",
-                    icon: "fa-gem",
-                    copy: "You’ve chosen premium finishes. This isn't just about looks; it's about <strong>Identity and Reputation</strong>. When someone walks in, the space feels substantial. [cite_start]High-end finishes signal value immediately, attracting better tenants or making family feel like royalty, not guests[cite: 21]."
-                }
-            }
-        };
-
-        // --- 2. SAGO RENDER LOGIC ---
-        function renderSagoBreakdown(inputs) {
-            // Helper to clean inputs
-            const type = (inputs.q1 || 'detached').toLowerCase();
-            const goal = (inputs.q_goal || 'default').toLowerCase(); // Assuming q_goal exists, else default
-            const finish = (inputs.q3 || 'standard').toLowerCase();
-            const sqft = inputs.q2 || 600;
-
-            // Get Data
-            const sType = sagoContent.structure[type] || sagoContent.structure['default'];
-            const sUsage = sagoContent.usage[goal] || sagoContent.usage['default'];
-            const sFinish = sagoContent.finishes[finish] || sagoContent.finishes['standard'];
-
-            // Build HTML
-            return `
-                <div class="glass-panel rounded-xl overflow-hidden border-l-4 ${sType.color} transition-all hover:-translate-y-1 duration-300">
-                    <div class="bg-slate-800/50 p-4 border-b border-slate-700 flex items-center gap-3">
-                        <div class="bg-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-white">
-                            <i class="fas ${sType.icon}"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-white text-lg">${sType.title}</h3>
-                            <p class="text-xs text-slate-400 uppercase tracking-wider">Based on ${sqft} sq. ft. ${type.replace('_',' ')}</p>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-slate-300 leading-relaxed text-sm">${sType.copy}</p>
-                    </div>
-                </div>
-
-                <div class="glass-panel rounded-xl overflow-hidden border-l-4 border-yellow-500 transition-all hover:-translate-y-1 duration-300">
-                    <div class="bg-slate-800/50 p-4 border-b border-slate-700 flex items-center gap-3">
-                        <div class="bg-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-yellow-400">
-                            <i class="fas ${sUsage.icon}"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-white text-lg">${sUsage.title}</h3>
-                            <p class="text-xs text-slate-400 uppercase tracking-wider">Project Goal</p>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-slate-300 leading-relaxed text-sm">${sUsage.copy}</p>
-                    </div>
-                </div>
-
-                <div class="glass-panel rounded-xl overflow-hidden border-l-4 border-teal-500 transition-all hover:-translate-y-1 duration-300">
-                    <div class="bg-slate-800/50 p-4 border-b border-slate-700 flex items-center gap-3">
-                        <div class="bg-slate-700 w-10 h-10 rounded-full flex items-center justify-center text-teal-400">
-                            <i class="fas ${sFinish.icon}"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-white text-lg">${sFinish.title}</h3>
-                            <p class="text-xs text-slate-400 uppercase tracking-wider">${finish.replace('_',' ')} Level</p>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-slate-300 leading-relaxed text-sm">${sFinish.copy}</p>
-                    </div>
-                </div>
-
-                <div class="bg-amber-900/20 border border-amber-600/30 rounded-xl p-6 relative overflow-hidden">
-                    <div class="absolute -right-4 -top-4 text-amber-500/10 text-9xl"><i class="fas fa-clock"></i></div>
-                    <h4 class="text-amber-400 font-bold text-lg mb-2"><i class="fas fa-exclamation-triangle mr-2"></i>The 'Red Tape' Shark</h4>
-                    <p class="text-amber-100/80 text-sm relative z-10">
-                        The "Old Plan" is to wait months to start. Here is the Shark: <strong>Permitting Delays</strong>. Every month you wait, code changes can increase costs by 5-10%. We use pre-approved specs to cut that red tape. This quote assumes we start the paperwork <em>now</em> to lock in 2026 pricing.
-                    </p>
-                </div>
-            `;
-        }
-        
-        // --- 3. STANDARD CALCULATION LOGIC ---
+        // --- 1. CONFIGURATION ---
         const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzlz4UXQz_lZeAa8X1zwq4HsHNPAYPKDQ8aF3HaMVfbms9KIy-dnmhGU-wfTH0mAcaQ/exec";
 
-        const params = new URLSearchParams(window.location.search);
-        const inputs = Object.fromEntries(params.entries());
-
-        // DEFAULT PRICING (Fallback)
+        // Fallback Pricing (Offline)
         let PRICING = {
             base_sqft_garage: 225, base_sqft_attached: 310, base_sqft_detached: 350,
             finish_mid_markup: 1.15, finish_high_markup: 1.35,
-            site_slope_flat: 0, site_slope_mod: 12000, site_demo: 6500,
+            site_slope_mod: 12000, site_demo: 6500,
             util_tie_in: 2500, util_new_lines: 12500,
             panel_upgrade: 4200, roof_tile_sqft: 14, ceil_vault_sqft: 18,
             door_bifold: 9500, hvac_central: 6500, plans_soft_cost: 7500, permit_fees: 5500
         };
 
-        // LOAD REAL-TIME PRICING THEN CALCULATE
-        window.onload = function() {
+        const params = new URLSearchParams(window.location.search);
+        const inputs = Object.fromEntries(params.entries());
+
+        // --- 2. BREAKDOWN DESCRIPTIONS (Persuasive/Strategic Copy) ---
+        const descriptions = {
+            q1: {
+                "detached": { title: "Structure: Detached Unit", copy: "Excellent choice for maximizing privacy and long-term property value. This creates a distinct, separate asset from your main home." },
+                "attached": { title: "Structure: Attached Unit", copy: "A strategic, efficient choice. By sharing a wall, you reduce utility trenching costs and maximize your backyard space." },
+                "garage_conversion": { title: "Structure: Garage Conversion", copy: "The highest ROI option. By utilizing the existing shell, you bypass major framing costs and speed up the project timeline significantly." }
+            },
+            q2: { title: "Living Space", copy: val => `Optimized specifically for ${val} sq. ft. of efficient, livable space.` },
+            q3: {
+                "standard": { title: "Finishes: Standard", copy: "Focused on durability and clean aesthetics. Perfect for low-maintenance living." },
+                "mid_range": { title: "Finishes: Mid-Range", copy: "The 'Sweet Spot' for value. Includes upgrades like LVP flooring and Quartz that drastically improve rental appeal." },
+                "high_end": { title: "Finishes: High-End", copy: "Premium selection. Signals quality immediately to appraisers and tenants with top-tier materials." }
+            },
+            q4: {
+                "flat_access": { title: "Site: Flat", copy: "Ideal conditions. Your budget goes 100% into the build quality rather than grading or retaining walls." },
+                "sloped_mod": { title: "Site: Moderate Slope", copy: "We have included necessary engineering to handle the slope safely, turning a potential challenge into a view-enhancing feature." },
+                "demo": { title: "Site: Requires Demo", copy: "Removing the old structure gives us a clean slate to build a modern, energy-efficient unit." }
+            },
+            q5: {
+                "tie_in": { title: "Utilities: Tie-In", copy: "Cost-efficient strategy. We will connect to the main house to save on new meter fees." },
+                "new_lines": { title: "Utilities: New Lines", copy: "Complete independence. This allows you to bill tenants separately and increases the unit's standalone value." }
+            },
+            q6: {
+                "needs_design": { title: "Architecture: Custom Plans", copy: "We handle the full design-to-permit process, ensuring your layout perfectly fits your specific lot constraints." },
+                "have_plans": { title: "Architecture: Ready to Build", copy: "Since you have plans, we can expedite the timeline and move straight to the bid/build phase." }
+            },
+            // Interiors
+            q7: { title: "Kitchen Layout", copy: val => `Designed for an efficient ${val.replace('_',' ')} layout to maximize usability.` },
+            q8: { title: "Bathrooms", copy: val => `Includes ${val.replace('_',' ')} configuration with modern waterproofing.` },
+            q9: { title: "Flooring", copy: val => `Installation of durable ${val.replace('_',' ')} flooring throughout main areas.` },
+            q10: { title: "Windows", copy: val => `Energy-efficient ${val} windows to meet Title 24 requirements.` },
+            // Upgrades
+            q11: { 
+                "upgrade": { title: "Electrical: Main Panel Upgrade", copy: "Smart move. Upgrading the main panel future-proofs your entire property for EVs and modern tech." },
+                "modern": { title: "Electrical: Standard Sub-Panel", copy: "Includes a dedicated sub-panel to ensure safe, independent power distribution." }
+            },
+            q12: { 
+                "tile": { title: "Roofing: Tile Upgrade", copy: "Adds massive curb appeal and longevity. A tile roof matches the high aesthetic of premium LA homes." },
+                "shingle": { title: "Roofing: Composition Shingle", copy: "Cost-effective and reliable. Modern shingles offer 30+ year protection with minimal maintenance." }
+            },
+            q13: {
+                "vaulted": { title: "Ceilings: Vaulted", copy: "Dramatic impact. Vaulting the ceilings makes the unit feel significantly larger and more luxurious." },
+                "standard": { title: "Ceilings: Standard Height", copy: "Efficient heating and cooling profile with a clean, modern look." }
+            },
+            q14: {
+                "bifold": { title: "Entry: Bi-Fold Doors", copy: "A lifestyle upgrade. Seamlessly blends indoor and outdoor living, effectively doubling your entertaining space." },
+                "standard": { title: "Entry: Standard", copy: "Secure and energy-efficient entry system." }
+            },
+            q15: {
+                "central": { title: "HVAC: Central Air", copy: "The ultimate comfort choice. Provides silent, whole-home climate control without visible wall units." },
+                "minisplit": { title: "HVAC: Mini-Split", copy: "Highly efficient. Zones the cooling so you stop wasting money cooling empty rooms." }
+            }
+        };
+
+        // --- 3. INIT ---
+        (function init() {
+            renderBreakdown();
+            calculateQuote(); // Run offline first
+            
+            // Fetch Live Pricing
             fetch(WEBHOOK_URL + "?type=pricing")
                 .then(res => res.json())
                 .then(data => {
-                    if(!data.error) PRICING = { ...PRICING, ...data };
-                    calculateQuote();
+                    if(!data.error) {
+                        PRICING = { ...PRICING, ...data };
+                        calculateQuote();
+                    }
                 })
-                .catch(e => {
-                    console.log("Using offline pricing");
-                    calculateQuote();
-                });
-        };
+                .catch(console.error);
+        })();
 
+        // --- 4. BREAKDOWN RENDERER ---
+        function renderBreakdown() {
+            const container = document.getElementById('breakdown');
+            let html = '';
+
+            // Helper to get text
+            const getDesc = (key, val) => {
+                if(!descriptions[key]) return null;
+                if(typeof descriptions[key].copy === 'function') {
+                    return { title: descriptions[key].title, copy: descriptions[key].copy(val) };
+                }
+                return descriptions[key][val] || { title: key, copy: val };
+            };
+
+            // Iterate Q1 - Q15
+            for(let i=1; i<=15; i++) {
+                const key = 'q' + i;
+                const val = inputs[key];
+                if(!val) continue;
+
+                const data = getDesc(key, val);
+                if(!data) continue;
+
+                // Group logic (Optional: Group interiors into one card to save space? 
+                // For now, listing all as requested to address "each one")
+                
+                html += `
+                <div class="glass-panel p-4 rounded-xl border-l-4 border-slate-600 mb-3 flex flex-col md:flex-row gap-4 items-start md:items-center transition-all hover:-translate-y-1">
+                    <div class="bg-slate-800 p-3 rounded-full shrink-0">
+                        <i class="fas fa-check text-green-400"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">${data.title}</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">${data.copy}</p>
+                    </div>
+                </div>`;
+            }
+            container.innerHTML = html;
+        }
+
+        // --- 5. CALCULATION LOGIC (Enhanced Range) ---
         function calculateQuote() {
-            // 1. BASE VARIABLES
-            const aduType = inputs.q1 || 'detached';
-            const sqft = parseInt(inputs.q2) || 600;
-            const finishLevel = inputs.q3 || 'standard';
-            const siteCondition = inputs.q4 || 'flat_access';
-            const utilities = inputs.q5 || 'tie_in';
-            const hasPlans = inputs.q6 || 'needs_design';
-            
-            // New Vars
-            const electrical = inputs.q11 || 'modern';
-            const roofing = inputs.q12 || 'shingle';
-            const ceiling = inputs.q13 || 'standard';
-            const doors = inputs.q14 || 'standard';
-            const hvac = inputs.q15 || 'minisplit';
+            try {
+                // Inputs
+                const sqft = parseInt(inputs.q2) || 600;
+                const aduType = inputs.q1 || 'detached';
+                const finish = inputs.q3 || 'standard';
+                const site = inputs.q4 || 'flat_access';
+                const util = inputs.q5 || 'tie_in';
+                const plans = inputs.q6 || 'needs_design';
 
-            // 2. SHELL COST
-            let baseRate = PRICING.base_sqft_detached;
-            if (aduType === 'garage_conversion') baseRate = PRICING.base_sqft_garage;
-            if (aduType === 'attached') baseRate = PRICING.base_sqft_attached;
-            
-            let constructionLow = sqft * baseRate;
-            let constructionHigh = sqft * (baseRate * 1.15); // Shell range
+                // Base
+                let baseRate = PRICING.base_sqft_detached;
+                if(aduType === 'garage_conversion') baseRate = PRICING.base_sqft_garage;
+                if(aduType === 'attached') baseRate = PRICING.base_sqft_attached;
 
-            // 3. FINISH LEVEL
-            if (finishLevel === 'mid_range') { 
-                constructionLow *= PRICING.finish_mid_markup; 
-                constructionHigh *= PRICING.finish_mid_markup; 
+                // Tight Range Logic (Low * 1.0 vs Low * 1.15 for High)
+                // Adjust per your preference. Standard construction variance is usually 10-15%.
+                let costLow = sqft * baseRate;
+                let costHigh = costLow * 1.15; // 15% Gap (Tighter than 30%)
+
+                // Finish Multipliers
+                if(finish === 'mid_range') { costLow *= PRICING.finish_mid_markup; costHigh *= PRICING.finish_mid_markup; }
+                if(finish === 'high_end') { costLow *= PRICING.finish_high_markup; costHigh *= PRICING.finish_high_markup; }
+
+                // Add-ons (Apply to both Low & High)
+                const add = (amt) => { costLow += amt; costHigh += (amt * 1.1); }; // Slight variance on upgrades
+
+                if(site === 'sloped_mod') add(parseInt(PRICING.site_slope_mod));
+                if(site === 'demo') add(parseInt(PRICING.site_demo));
+                
+                if(util === 'new_lines') add(parseInt(PRICING.util_new_lines));
+                else add(parseInt(PRICING.util_tie_in));
+
+                if(inputs.q11 === 'upgrade') add(parseInt(PRICING.panel_upgrade));
+                if(inputs.q12 === 'tile') add(sqft * PRICING.roof_tile_sqft);
+                if(inputs.q13 === 'vaulted') add(sqft * PRICING.ceil_vault_sqft);
+                if(inputs.q14 === 'bifold') add(parseInt(PRICING.door_bifold));
+                if(inputs.q15 === 'central') add(parseInt(PRICING.hvac_central));
+
+                // Soft Costs
+                let soft = parseInt(PRICING.permit_fees);
+                if(plans === 'needs_design') soft += parseInt(PRICING.plans_soft_cost);
+                
+                costLow += soft;
+                costHigh += soft;
+
+                // Rounding
+                const lowFinal = Math.round(costLow / 1000) * 1000;
+                const highFinal = Math.round(costHigh / 1000) * 1000;
+
+                // Display
+                document.getElementById('loadingPrice').style.display = 'none';
+                document.getElementById('priceDisplay').classList.remove('hidden');
+                document.getElementById('lowPrice').innerText = lowFinal.toLocaleString();
+                document.getElementById('highPrice').innerText = highFinal.toLocaleString();
+
+            } catch(e) {
+                console.error("Calc Error", e);
             }
-            if (finishLevel === 'high_end') { 
-                constructionLow *= PRICING.finish_high_markup; 
-                constructionHigh *= PRICING.finish_high_markup; 
-            }
-
-            // 4. LINE ITEM ADD-ONS
-            if (siteCondition === 'sloped_mod') { constructionLow += parseInt(PRICING.site_slope_mod); constructionHigh += (PRICING.site_slope_mod * 1.2); }
-            if (siteCondition === 'demo') { constructionLow += parseInt(PRICING.site_demo); constructionHigh += (PRICING.site_demo * 1.2); }
-            
-            if (utilities === 'new_lines') { constructionLow += parseInt(PRICING.util_new_lines); constructionHigh += (PRICING.util_new_lines * 1.2); }
-            else { constructionLow += parseInt(PRICING.util_tie_in); constructionHigh += (PRICING.util_tie_in * 1.2); }
-
-            if (electrical === 'upgrade') { constructionLow += parseInt(PRICING.panel_upgrade); constructionHigh += (PRICING.panel_upgrade * 1.1); }
-            
-            if (roofing === 'tile') { constructionLow += (sqft * PRICING.roof_tile_sqft); constructionHigh += (sqft * PRICING.roof_tile_sqft * 1.1); }
-            
-            if (ceiling === 'vaulted') { constructionLow += (sqft * PRICING.ceil_vault_sqft); constructionHigh += (sqft * PRICING.ceil_vault_sqft * 1.1); }
-            
-            if (doors === 'bifold') { constructionLow += parseInt(PRICING.door_bifold); constructionHigh += (PRICING.door_bifold * 1.2); }
-            
-            if (hvac === 'central') { constructionLow += parseInt(PRICING.hvac_central); constructionHigh += (PRICING.hvac_central * 1.2); }
-
-            // 5. SOFT COSTS
-            let plans = (hasPlans === 'needs_design') ? parseInt(PRICING.plans_soft_cost) : 0;
-            let permits = parseInt(PRICING.permit_fees);
-
-            let totalLow = constructionLow + plans + permits;
-            let totalHigh = constructionHigh + plans + permits;
-
-            // 6. DISPLAY
-            const low = Math.round(totalLow / 1000) * 1000;
-            const high = Math.round(totalHigh / 1000) * 1000;
-
-            document.getElementById('loadingPrice').style.display = 'none';
-            document.getElementById('priceDisplay').classList.remove('hidden');
-            document.getElementById('lowPrice').innerText = low.toLocaleString();
-            document.getElementById('highPrice').innerText = high.toLocaleString();
-            
-            // Build Breakdown HTML
-            const breakdown = document.getElementById('breakdown');
-            breakdown.innerHTML = renderSagoBreakdown(inputs);
         }
     </script>
 </body>
