@@ -92,7 +92,7 @@
             </div>
             <div class="glass-panel p-6 rounded-xl border border-slate-700">
                 <h4 class="font-bold text-white text-lg mb-2"><i class="far fa-question-circle text-teal-400 mr-2"></i>Why choose SAMS Construction?</h4>
-                <p class="text-slate-300 text-sm leading-relaxed">Clients choose us for high-quality workmanship and speed. We pride ourselves on very fast completion times without cutting corners.</p>
+                <p class="text-slate-300 text-sm leading-relaxed">For over 22 years, Clients have been choosing us for our high-quality workmanship and speed. We pride ourselves on very fast completion times without cutting corners.</p>
             </div>
             <div class="glass-panel p-6 rounded-xl border border-slate-700">
                 <h4 class="font-bold text-white text-lg mb-2"><i class="far fa-question-circle text-teal-400 mr-2"></i>Do you have any current specials?</h4>
@@ -131,7 +131,7 @@
 
     <script>
         // --- 1. CONFIGURATION ---
-        const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzlz4UXQz_lZeAa8X1zwq4HsHNPAYPKDQ8aF3HaMVfbms9KIy-dnmhGU-wfTH0mAcaQ/exec";
+        const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwRdV_yj3lH-9J67YaodX0B1HRk8GeeAiPzmVPCimrKoqCZ6UwqAf3h8CVnbcQb0k_O/exec";
 
         // Fallback Pricing (Offline)
         let PRICING = {
@@ -148,58 +148,256 @@
 
         // --- 2. BREAKDOWN DESCRIPTIONS (Persuasive/Strategic Copy) ---
         const descriptions = {
+            // Q1: ADU Type
             q1: {
-                "detached": { title: "Structure: Detached Unit", copy: "Excellent choice for maximizing privacy and long-term property value. This creates a distinct, separate asset from your main home." },
-                "attached": { title: "Structure: Attached Unit", copy: "A strategic, efficient choice. By sharing a wall, you reduce utility trenching costs and maximize your backyard space." },
-                "garage_conversion": { title: "Structure: Garage Conversion", copy: "The highest ROI option. By utilizing the existing shell, you bypass major framing costs and speed up the project timeline significantly." }
+                "detached": { 
+                    title: "ADU Type", 
+                    subtitle: "Detached New Construction",
+                    copy: "Garage conversions are typically the most cost-effective option as they use an existing structure. New detached ADUs offer more design flexibility but involve higher costs for foundations, framing, and utility connections. Your choice maximizes privacy and creates a distinct, separate asset that significantly boosts property value and rental potential."
+                },
+                "attached": { 
+                    title: "ADU Type", 
+                    subtitle: "Attached Addition",
+                    copy: "Garage conversions are typically the most cost-effective option as they use an existing structure. New detached ADUs offer more design flexibility but involve higher costs for foundations, framing, and utility connections. An attached unit is a strategic, efficient choice—by sharing a wall with your main house, you reduce utility trenching costs while maximizing usable backyard space."
+                },
+                "garage_conversion": { 
+                    title: "ADU Type", 
+                    subtitle: "Garage Conversion (Existing Structure)",
+                    copy: "Garage conversions are typically the most cost-effective option as they use an existing structure. New detached ADUs offer more design flexibility but involve higher costs for foundations, framing, and utility connections. You've chosen the highest ROI option—by utilizing the existing shell, you bypass major framing and foundation costs and can complete the project significantly faster."
+                }
             },
-            q2: { title: "Living Space", copy: val => `Optimized specifically for ${val} sq. ft. of efficient, livable space.` },
-            q3: {
-                "standard": { title: "Finishes: Standard", copy: "Focused on durability and clean aesthetics. Perfect for low-maintenance living." },
-                "mid_range": { title: "Finishes: Mid-Range", copy: "The 'Sweet Spot' for value. Includes upgrades like LVP flooring and Quartz that drastically improve rental appeal." },
-                "high_end": { title: "Finishes: High-End", copy: "Premium selection. Signals quality immediately to appraisers and tenants with top-tier materials." }
-            },
-            q4: {
-                "flat_access": { title: "Site: Flat", copy: "Ideal conditions. Your budget goes 100% into the build quality rather than grading or retaining walls." },
-                "sloped_mod": { title: "Site: Moderate Slope", copy: "We have included necessary engineering to handle the slope safely, turning a potential challenge into a view-enhancing feature." },
-                "demo": { title: "Site: Requires Demo", copy: "Removing the old structure gives us a clean slate to build a modern, energy-efficient unit." }
-            },
-            q5: {
-                "tie_in": { title: "Utilities: Tie-In", copy: "Cost-efficient strategy. We will connect to the main house to save on new meter fees." },
-                "new_lines": { title: "Utilities: New Lines", copy: "Complete independence. This allows you to bill tenants separately and increases the unit's standalone value." }
-            },
-            q6: {
-                "needs_design": { title: "Architecture: Custom Plans", copy: "We handle the full design-to-permit process, ensuring your layout perfectly fits your specific lot constraints." },
-                "have_plans": { title: "Architecture: Ready to Build", copy: "Since you have plans, we can expedite the timeline and move straight to the bid/build phase." }
-            },
-            // Interiors
-            q7: { title: "Kitchen Layout", copy: val => `Designed for an efficient ${val.replace('_',' ')} layout to maximize usability.` },
-            q8: { title: "Bathrooms", copy: val => `Includes ${val.replace('_',' ')} configuration with modern waterproofing.` },
-            q9: { title: "Flooring", copy: val => `Installation of durable ${val.replace('_',' ')} flooring throughout main areas.` },
-            q10: { title: "Windows", copy: val => `Energy-efficient ${val} windows to meet Title 24 requirements.` },
-            // Upgrades
-            q11: { 
-                "upgrade": { title: "Electrical: Main Panel Upgrade", copy: "Smart move. Upgrading the main panel future-proofs your entire property for EVs and modern tech." },
-                "modern": { title: "Electrical: Standard Sub-Panel", copy: "Includes a dedicated sub-panel to ensure safe, independent power distribution." }
-            },
-            q12: { 
-                "tile": { title: "Roofing: Tile Upgrade", copy: "Adds massive curb appeal and longevity. A tile roof matches the high aesthetic of premium LA homes." },
-                "shingle": { title: "Roofing: Composition Shingle", copy: "Cost-effective and reliable. Modern shingles offer 30+ year protection with minimal maintenance." }
-            },
-            q13: {
-                "vaulted": { title: "Ceilings: Vaulted", copy: "Dramatic impact. Vaulting the ceilings makes the unit feel significantly larger and more luxurious." },
-                "standard": { title: "Ceilings: Standard Height", copy: "Efficient heating and cooling profile with a clean, modern look." }
-            },
-            q14: {
-                "bifold": { title: "Entry: Bi-Fold Doors", copy: "A lifestyle upgrade. Seamlessly blends indoor and outdoor living, effectively doubling your entertaining space." },
-                "standard": { title: "Entry: Standard", copy: "Secure and energy-efficient entry system." }
-            },
-            q15: {
-                "central": { title: "HVAC: Central Air", copy: "The ultimate comfort choice. Provides silent, whole-home climate control without visible wall units." },
-                "minisplit": { title: "HVAC: Mini-Split", copy: "Highly efficient. Zones the cooling so you stop wasting money cooling empty rooms." }
-            }
-        };
 
+            // Q2: Square Footage
+            q2: { 
+                title: "Square Footage", 
+                subtitle: val => `Approximately ${val} sq ft`,
+                copy: val => `Size is the largest driver of total cost. While larger ADUs cost more overall, they often have a slightly lower price per square foot due to efficiencies of scale in materials and labor. Your ${val} sq ft layout is optimized for efficient, livable space that maximizes functionality without wasting square footage on unnecessary areas.`
+            },
+
+            // Q3: Finish Level
+            q3: {
+                "standard": { 
+                    title: "Finish Level", 
+                    subtitle: "Standard Builder-Grade",
+                    copy: "Your choice of finishes directly impacts the budget. Builder-grade is budget-friendly, while high-end options like custom cabinetry, stone countertops, and premium flooring increase the investment but also the property value. Standard finishes focus on durability and clean aesthetics—perfect for low-maintenance living and strong rental returns without over-investing in a rental property."
+                },
+                "mid_range": { 
+                    title: "Finish Level", 
+                    subtitle: "Mid-Range Upgrades",
+                    copy: "Your choice of finishes directly impacts the budget. Builder-grade is budget-friendly, while high-end options like custom cabinetry, stone countertops, and premium flooring increase the investment but also the property value. Mid-range is the 'sweet spot' for value—includes upgrades like LVP flooring and quartz countertops that drastically improve rental appeal and justify higher rents without breaking the budget."
+                },
+                "high_end": { 
+                    title: "Finish Level", 
+                    subtitle: "Luxury High-End Custom",
+                    copy: "Your choice of finishes directly impacts the budget. Builder-grade is budget-friendly, while high-end options like custom cabinetry, stone countertops, and premium flooring increase the investment but also the property value. High-end finishes signal quality immediately to appraisers and premium tenants—custom cabinetry, stone surfaces, and designer fixtures create a luxury living experience that commands top-tier rental rates."
+                }
+            },
+
+            // Q4: Site Condition
+            q4: {
+                "flat_access": { 
+                    title: "Site Condition", 
+                    subtitle: "Flat lot with easy access",
+                    copy: "A flat lot with easy access for machinery and material delivery keeps preparation costs low. Sloped or difficult-to-access sites may require additional investment in grading, foundation work, and labor. Your ideal site conditions mean your budget goes 100% into build quality rather than grading, retaining walls, or access challenges."
+                },
+                "sloped_mod": { 
+                    title: "Site Condition", 
+                    subtitle: "Moderate Slope / Narrow Access",
+                    copy: "A flat lot with easy access for machinery and material delivery keeps preparation costs low. Sloped or difficult-to-access sites may require additional investment in grading, foundation work, and labor. We've included necessary engineering to handle the slope safely—turning a potential challenge into a view-enhancing feature and creating opportunities for unique architectural elements."
+                },
+                "demo": { 
+                    title: "Site Condition", 
+                    subtitle: "Requires Demolition / Difficult Access",
+                    copy: "A flat lot with easy access for machinery and material delivery keeps preparation costs low. Sloped or difficult-to-access sites may require additional investment in grading, foundation work, and labor. Projects requiring significant demolition or structural modifications add complexity and cost. Our team is fully equipped to handle these challenges safely and efficiently, removing the old structure to give us a clean slate for building a modern, energy-efficient unit."
+                }
+            },
+
+            // Q5: Utility Connections
+            q5: {
+                "tie_in": { 
+                    title: "Utility Connections", 
+                    subtitle: "Tie-in to main house",
+                    copy: "Tying into the main house utilities is the most cost-efficient strategy, saving thousands on new meter installations and trenching. New separate lines are required for some rental scenarios and provide complete independence for billing. Connecting to your main house saves on new meter fees and trenching—smart economics for owner-occupied or family-use ADUs."
+                },
+                "new_lines": { 
+                    title: "Utility Connections", 
+                    subtitle: "New separate lines to street",
+                    copy: "Tying into the main house utilities is the most cost-efficient strategy, saving thousands on new meter installations and trenching. New separate lines are required for some rental scenarios and provide complete independence for billing. Complete utility independence allows you to bill tenants separately and increases the unit's standalone value—essential for professional rental operations."
+                }
+            },
+
+            // Q6: Plans Status
+            q6: {
+                "needs_design": { 
+                    title: "Design & Permitting", 
+                    subtitle: "Need Design & Permitting services",
+                    copy: "Having approved plans ready accelerates the timeline significantly. If design and permitting services are needed, we handle the full process while ensuring your layout perfectly fits your specific lot constraints and maximizes the allowable square footage under local zoning."
+                },
+                "plans_ready": { 
+                    title: "Design & Permitting", 
+                    subtitle: "Plans approved and ready",
+                    copy: "Having approved plans ready accelerates the timeline significantly. If design and permitting services are needed, we handle the full process. Since you have plans ready, we can expedite the timeline and move straight to the bid and construction phase, potentially starting 4-6 weeks earlier than projects requiring design work."
+                }
+            },
+
+            // Q7: Primary Motivation
+            q7: {
+                "rental": { 
+                    title: "Primary Motivation", 
+                    subtitle: "Generate Rental Income",
+                    copy: "That's a fantastic investment strategy. We specialize in building durable, appealing ADUs that attract high-quality tenants, helping you maximize your return on investment quickly. Our builds are designed for low maintenance and high tenant satisfaction."
+                },
+                "family": { 
+                    title: "Primary Motivation", 
+                    subtitle: "Housing for Family/In-Laws",
+                    copy: "Multi-generational living is becoming increasingly popular and valuable. We'll ensure your ADU provides the perfect balance of privacy and proximity, with features that support comfortable, dignified aging-in-place or young adult independence."
+                },
+                "office": { 
+                    title: "Primary Motivation", 
+                    subtitle: "Home Office / Personal Space",
+                    copy: "A dedicated workspace separate from your home creates the professional environment and work-life boundaries that remote workers need. We'll design a space that inspires productivity while being just steps from your back door—and it's potentially tax-deductible if used exclusively for business."
+                }
+            },
+
+            // Q8: Timeline Expectations
+            q8: {
+                "asap": { 
+                    title: "Project Timeline", 
+                    subtitle: "Start ASAP / Ready now",
+                    copy: "Perfect. We have availability to start the design and permitting process right away. Let's schedule your on-site consultation to lock in your project slot and take advantage of our current incentives before our calendar fills 4-6 weeks out."
+                },
+                "1_3_months": { 
+                    title: "Project Timeline", 
+                    subtitle: "Within 1-3 months",
+                    copy: "This timeline works well with our typical design and permit approval process. We can begin pre-planning now to ensure we're ready to break ground exactly when you need us, avoiding any delays from permit backlogs."
+                },
+                "3_6_months": { 
+                    title: "Project Timeline", 
+                    subtitle: "3-6 months out",
+                    copy: "Planning ahead is smart. This gives us ample time to perfect the design, navigate the permit process smoothly, and schedule your project during optimal weather conditions. We can lock in current pricing and material costs well in advance."
+                },
+                "exploring": { 
+                    title: "Project Timeline", 
+                    subtitle: "Just exploring options",
+                    copy: "Great! This is the perfect time to understand what's possible and get accurate numbers. There's no pressure—our job is to give you the information you need to make a confident decision when the timing is right for you."
+                }
+            },
+
+            // Q9: Top Priority
+            q9: {
+                "price": { 
+                    title: "Your Top Priority", 
+                    subtitle: "Lowest Price",
+                    copy: "Getting the best value is smart. We'll work with you to optimize the plan, suggesting materials and methods that provide the best quality and durability for your budget. We believe in transparent pricing with no surprises—you'll see exactly where every dollar goes and we'll identify opportunities to save without compromising on the essentials that matter most."
+                },
+                "value": { 
+                    title: "Your Top Priority", 
+                    subtitle: "Best Value (Quality/Cost Balance)",
+                    copy: "This is the approach most of our clients take—and it's exactly how we build. We focus on delivering maximum quality where it counts (structure, waterproofing, systems) while being strategic about finishes and features. You get a project built to last 50+ years without paying for unnecessary upgrades that don't improve your ROI or daily living experience."
+                },
+                "speed": { 
+                    title: "Your Top Priority", 
+                    subtitle: "Speed & Quality",
+                    copy: "We're known for fast builds without cutting corners—it's one of our key differentiators after 22 years in business. We have dedicated crews, established supplier relationships, and streamlined permitting processes that let us deliver quality projects in 6-9 months instead of the typical 12-18. Speed matters when you're losing rental income or need family housing quickly."
+                }
+            },
+
+            // Q10: Ownership Status / Decision Making Authority
+            q10: {
+                "owner": { 
+                    title: "Ownership Status", 
+                    subtitle: "Property owner with full decision-making authority",
+                    copy: "Perfect. As the sole decision-maker, we can move efficiently through the consultation and proposal process. During your on-site estimate appointment, we'll walk through all the details, answer your questions, and provide you with everything needed to make a confident decision about moving forward."
+                },
+                "buying": { 
+                    title: "Ownership Status", 
+                    subtitle: "Joint decision with spouse/partner",
+                    copy: "We completely understand—major home projects require buy-in from all decision-makers. This is exactly why it's critical that both you and your spouse/partner attend the on-site estimate appointment together. We need everyone present to discuss budget, timeline, design preferences, and answer questions in real-time. Without all decision-makers present, we cannot move forward with the proposal, as it would delay the process and create miscommunication. Let's make sure everyone's calendar is aligned when we schedule."
+                },
+                "researching": { 
+                    title: "Ownership Status", 
+                    subtitle: "Researching on behalf of property owner",
+                    copy: "Thank you for doing the research legwork! While we're happy to provide you with this preliminary estimate, please understand that to move forward with an official on-site consultation and detailed proposal, we'll need the actual property owner(s) present and involved. All decision-makers must attend the appointment together—this is non-negotiable, as it ensures clear communication, aligned expectations, and the ability to answer questions and make decisions in real-time without delays or miscommunication."
+                }
+            },
+
+            // Q11: Electrical Panel
+            q11: { 
+                "upgrade": { 
+                    title: "Electrical Panel", 
+                    subtitle: "Main panel needs upgrade (100 Amp → 200+ Amp)",
+                    copy: "Smart move. Upgrading the main panel future-proofs your entire property for EV chargers, modern appliances, and tech. This investment benefits both your main house and ADU while meeting current electrical code requirements."
+                },
+                "modern": { 
+                    title: "Electrical Panel", 
+                    subtitle: "Modern panel (200+ Amp) already installed",
+                    copy: "Excellent—your existing modern panel provides plenty of capacity. We'll install a dedicated sub-panel to ensure safe, independent power distribution to your ADU without straining your main system."
+                }
+            },
+
+            // Q12: Roof Style
+            q12: { 
+                "tile": { 
+                    title: "Roof Style", 
+                    subtitle: "Spanish Tile / Concrete Tile",
+                    copy: "Tile roofing adds massive curb appeal and longevity—50+ year lifespan and superior fire resistance. A tile roof matches the high aesthetic of premium Southern California homes and signals quality to appraisers and tenants."
+                },
+                "shingle": { 
+                    title: "Roof Style", 
+                    subtitle: "Composition Shingle / Flat",
+                    copy: "Cost-effective and reliable. Modern composition shingles offer 30+ year protection with minimal maintenance and come in a variety of colors to match your main house perfectly."
+                }
+            },
+
+            // Q13: Ceiling Preference
+            q13: {
+                "vaulted": { 
+                    title: "Ceiling Preference", 
+                    subtitle: "Vaulted / Cathedral (high pitch)",
+                    copy: "Dramatic impact. Vaulting the ceilings makes the unit feel significantly larger and more luxurious—creating an open, airy atmosphere that commands higher rents and impresses visitors immediately."
+                },
+                "standard": { 
+                    title: "Ceiling Preference", 
+                    subtitle: "Standard Flat (8-9ft)",
+                    copy: "Efficient heating and cooling profile with a clean, modern look. Standard ceilings keep costs reasonable while still feeling spacious with proper lighting and design."
+                }
+            },
+
+            // Q14: Patio Door Style
+            q14: {
+                "bifold": { 
+                    title: "Patio Door Style", 
+                    subtitle: "Large Bi-Fold / Stacking Doors",
+                    copy: "A lifestyle upgrade. Bi-fold doors seamlessly blend indoor and outdoor living, effectively doubling your entertaining space and creating the California indoor-outdoor flow that premium tenants love."
+                },
+                "standard": { 
+                    title: "Patio Door Style", 
+                    subtitle: "Standard Sliding / French Doors",
+                    copy: "Secure and energy-efficient entry system with excellent natural light. Standard patio doors provide great functionality and curb appeal at a practical price point."
+                }
+            },
+
+            // Q15: Heating & Cooling
+            q15: {
+                "central": { 
+                    title: "Heating & Cooling", 
+                    subtitle: "Central Air (hidden ducts)",
+                    copy: "The ultimate comfort choice. Central air provides silent, whole-home climate control without visible wall units—creating a clean, upscale aesthetic that premium renters expect."
+                },
+                "minisplit": { 
+                    title: "Heating & Cooling", 
+                    subtitle: "Mini-Split System (wall mounted)",
+                    copy: "Highly efficient and cost-effective. Mini-splits zone the cooling so you're not wasting money cooling empty rooms, and modern units are whisper-quiet with sleek, unobtrusive designs."
+                }
+            },
+
+            // Interiors
+            q16: { title: "Kitchen Layout", copy: val => `Designed for an efficient ${val.replace('_',' ')} layout to maximize usability.` },
+            q17: { title: "Bathrooms", copy: val => `Includes ${val.replace('_',' ')} configuration with modern waterproofing.` },
+            q18: { title: "Flooring", copy: val => `Installation of durable ${val.replace('_',' ')} flooring throughout main areas.` },
+            q19: { title: "Windows", copy: val => `Energy-efficient ${val} windows to meet Title 24 requirements.` }
+        };
+        
         // --- 3. INIT ---
         (function init() {
             renderBreakdown();
@@ -225,10 +423,27 @@
             // Helper to get text
             const getDesc = (key, val) => {
                 if(!descriptions[key]) return null;
+                
+                // Handle function-based descriptions (like q2)
                 if(typeof descriptions[key].copy === 'function') {
-                    return { title: descriptions[key].title, copy: descriptions[key].copy(val) };
+                    return { 
+                        title: descriptions[key].title,
+                        subtitle: typeof descriptions[key].subtitle === 'function' 
+                            ? descriptions[key].subtitle(val) 
+                            : descriptions[key].subtitle,
+                        copy: descriptions[key].copy(val) 
+                    };
                 }
-                return descriptions[key][val] || { title: key, copy: val };
+                
+                // Handle object-based descriptions (most questions)
+                const desc = descriptions[key][val];
+                if(!desc) return null;
+                
+                return { 
+                    title: desc.title,
+                    subtitle: desc.subtitle,
+                    copy: desc.copy 
+                };
             };
 
             // Iterate Q1 - Q15
@@ -239,21 +454,25 @@
 
                 const data = getDesc(key, val);
                 if(!data) continue;
-
-                // Group logic (Optional: Group interiors into one card to save space? 
-                // For now, listing all as requested to address "each one")
                 
                 html += `
-                <div class="glass-panel p-4 rounded-xl border-l-4 border-slate-600 mb-3 flex flex-col md:flex-row gap-4 items-start md:items-center transition-all hover:-translate-y-1">
-                    <div class="bg-slate-800 p-3 rounded-full shrink-0">
-                        <i class="fas fa-check text-green-400"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-white text-lg">${data.title}</h4>
-                        <p class="text-slate-300 text-sm leading-relaxed">${data.copy}</p>
+                <div class="glass-panel p-6 rounded-xl border-l-4 border-blue-500 mb-4 transition-all hover:shadow-xl hover:border-blue-400">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-blue-600/20 p-3 rounded-full shrink-0 mt-1">
+                            <i class="fas fa-check text-blue-400 text-lg"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-white mb-1">${data.title}</h3>
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="text-sm text-slate-400 uppercase tracking-wide">Your Input:</span>
+                                <span class="text-blue-300 font-semibold">${data.subtitle || val}</span>
+                            </div>
+                            <p class="text-slate-300 leading-relaxed">${data.copy}</p>
+                        </div>
                     </div>
                 </div>`;
             }
+            
             container.innerHTML = html;
         }
 
