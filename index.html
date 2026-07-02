@@ -1482,32 +1482,58 @@
   <!-- Contact Section -->
   <section id="contact" class="contact">
     <div class="container">
-      <div class="contact-content">
+      <div class="contact-content" style="max-width: 700px; margin: 0 auto; text-align: center;">
         <div class="contact-info">
           <h2>Ready to Explore the Power of PARI?</h2>
-          <p>Whether you're looking to monetize your existing assets or acquire digital assets for passive income, we're here to help you build streams of revenue that operate in the background.</p>
+          <p style="color: #64748b; margin-bottom: 2.5rem; font-size: 1.125rem;">Whether you are looking to monetize your existing assets or acquire digital assets for passive income, let's connect!</p>
           
-          <div class="contact-options">
-            <div class="contact-option">
-              <h3>For Asset Owners & Partners</h3>
-              <p>Tell us about your primary digital asset, your target audience, and a key problem they have. We'll review and propose a specific, risk-free test.</p>
-            </div>
+          <form id="pari-contact-form" style="display: flex; flex-direction: column; gap: 1.2rem; text-align: left; background: #ffffff; padding: 2.5rem; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);">
             
-            <div class="contact-option">
-              <h3>For Asset Buyers</h3>
-              <p>Interested in acquiring digital assets that generate passive recurring income? Let's discuss our current portfolio and opportunities.</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;">
+              <div>
+                <label style="display: block; margin-bottom: 0.4rem; font-size: 0.875rem; font-weight: 600; color: #1a1a1a;">Your Name</label>
+                <input type="text" name="user_name" required style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #cbd5e1; background: #ffffff; color: #1a1a1a; font-family: inherit; font-size: 1rem;">
+              </div>
+              <div>
+                <label style="display: block; margin-bottom: 0.4rem; font-size: 0.875rem; font-weight: 600; color: #1a1a1a;">Email Address</label>
+                <input type="email" name="user_email" required style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #cbd5e1; background: #ffffff; color: #1a1a1a; font-family: inherit; font-size: 1rem;">
+              </div>
             </div>
-          </div>
 
-          <div class="contact-buttons" style="display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem;">
-            <a href="https://bit.ly/pari-sms-9163187107" class="btn-sms contact-sms" target="_blank">Send Us A SMS</a>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSc9YQLGZS8VYhII45xTW1VN9rnIsUAW3wKDMYMs3XTNIT75Dg/viewform?usp=dialog" target="_blank" class="btn-sms contact-sms">Send us a Message</a>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;">
+              <div>
+                <label style="display: block; margin-bottom: 0.4rem; font-size: 0.875rem; font-weight: 600; color: #1a1a1a;">Phone Number</label>
+                <input type="tel" name="user_phone" style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #cbd5e1; background: #ffffff; color: #1a1a1a; font-family: inherit; font-size: 1rem;">
+              </div>
+              <div>
+                <label style="display: block; margin-bottom: 0.4rem; font-size: 0.875rem; font-weight: 600; color: #1a1a1a;">I am looking to...</label>
+                <select name="partnership_type" style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #cbd5e1; background: #ffffff; color: #1a1a1a; font-family: inherit; font-size: 1rem; height: 46px;">
+                  <option value="Partner / Monetize Assets">Monetize My Existing Assets & Audience</option>
+                  <option value="Acquire Assets">Acquire / Buy Digital Assets</option>
+                  <option value="Other / AI Solutions">Inquire About AI Lead Revival & Cloning</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label style="display: block; margin-bottom: 0.4rem; font-size: 0.875rem; font-weight: 600; color: #1a1a1a;">Tell us about your digital assets or your primary business goals</label>
+              <textarea name="message" required rows="4" style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #cbd5e1; background: #ffffff; color: #1a1a1a; font-family: inherit; font-size: 1rem; resize: vertical;"></textarea>
+            </div>
+
+            <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; padding: 1rem; font-weight: 600; border-radius: 8px; border: none; font-size: 1rem; cursor: pointer;">Send Message</button>
+            
+            <p id="form-status" style="text-align: center; margin-top: 0.5rem; font-size: 0.95rem; font-weight: 600; display: none; padding: 0.5rem; border-radius: 6px;"></p>
+          </form>
+
+          <div style="margin-top: 2.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+            <p style="font-size: 0.9rem; color: #64748b; font-weight: 500;">Prefer mobile outreach?</p>
+            <a href="https://bit.ly/pari-sms-9163187107" class="btn-sms" target="_blank" style="padding: 14px 28px;">Send Us An SMS</a>
           </div>
         </div>
       </div>
     </div>
   </section>
-
+  
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
