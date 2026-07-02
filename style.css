@@ -1829,3 +1829,24 @@ section {
     padding: 6px 12px;
   }
 }
+
+/* Mobile Menu Active States Layout Engine */
+@media (max-width: 768px) {
+  .nav-menu.active {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    padding: 2rem;
+    border-bottom: 1px solid #e5e5e5;
+    gap: 1.5rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  }
+  .nav-sms {
+    margin-left: 0 !important;
+    width: 100%;
+  }
+}
