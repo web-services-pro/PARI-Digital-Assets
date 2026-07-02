@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.paridigitalassets.pro/sitemap.xml
+Sitemap: https://paridigitalassets.pro/sitemap.xml
