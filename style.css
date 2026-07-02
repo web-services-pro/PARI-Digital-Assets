@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px; /* Prevents the fixed header from covering section titles */
+}
+
 body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
