@@ -20,7 +20,183 @@
 
     gtag('config', 'G-SJWVY17BNJ');
   </script>
-  
+
+  <!-- Styles for the new trust strip and ROI calculator (self-contained so style.css stays untouched) -->
+  <style>
+    .pari-trust-strip {
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 2rem 0;
+    }
+    .pari-trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .pari-trust-item {
+      text-align: center;
+      padding: 0.5rem;
+    }
+    .pari-trust-icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .pari-trust-item h4 {
+      margin: 0 0 0.35rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+    .pari-trust-item p {
+      margin: 0;
+      font-size: 0.925rem;
+      line-height: 1.5;
+      color: #64748b;
+    }
+
+    .pari-why-yes {
+      margin-top: 3.5rem;
+    }
+    .pari-why-yes-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 2rem;
+    }
+    .pari-why-yes-header h3 {
+      margin-bottom: 0.75rem;
+    }
+    .pari-why-yes-header p {
+      color: #64748b;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .pari-math-line {
+      text-align: center;
+      max-width: 760px;
+      margin: 2rem auto 0;
+      font-size: 1.125rem;
+      font-weight: 600;
+      line-height: 1.6;
+      color: #1a1a1a;
+    }
+
+    .pari-calc {
+      padding: 5rem 0;
+      background: #f8fafc;
+    }
+    .pari-calc-card {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      padding: 2.5rem;
+    }
+    .pari-calc-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .pari-calc-field label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+    .pari-calc-field input[type="number"] {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.8rem;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #1a1a1a;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+    .pari-calc-slider {
+      margin-bottom: 2rem;
+    }
+    .pari-calc-slider label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.6rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+    .pari-calc-slider input[type="range"] {
+      width: 100%;
+    }
+    .pari-calc-result {
+      text-align: center;
+      background: #f1f5f9;
+      border-radius: 12px;
+      padding: 1.75rem 1rem;
+    }
+    .pari-calc-result-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #64748b;
+      margin-bottom: 0.35rem;
+    }
+    .pari-calc-result-amount {
+      font-size: 2.75rem;
+      font-weight: 700;
+      line-height: 1.1;
+      color: #1a1a1a;
+      word-break: break-word;
+    }
+    .pari-calc-result-formula {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #64748b;
+    }
+    .pari-calc-note {
+      margin: 1.25rem 0 0;
+      text-align: center;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+    .pari-calc-disclaimer {
+      margin: 0.75rem 0 0;
+      text-align: center;
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: #64748b;
+    }
+
+    @media (max-width: 900px) {
+      .pari-trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .pari-trust-grid {
+        grid-template-columns: 1fr;
+      }
+      .pari-calc-inputs {
+        grid-template-columns: 1fr;
+      }
+      .pari-calc-card {
+        padding: 1.5rem;
+      }
+      .pari-calc-result-amount {
+        font-size: 2.1rem;
+      }
+    }
+  </style>
+
   <!-- JSON-LD Schema Markup -->
   <script type="application/ld+json">
   {
@@ -266,6 +442,14 @@
           },
           {
             "@type": "Question",
+            "name": "Do I have to pay anything up front?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In most partnerships, you don't pay a dime up front. We typically work on revenue-sharing, so we only get paid on what we actually produce, after the money is already in your account."
+            }
+          },
+          {
+            "@type": "Question",
             "name": "How long does it take to see results?",
             "acceptedAnswer": {
               "@type": "Answer",
@@ -286,6 +470,22 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Educational content, courses, books, email lists, social media followings, software tools, and proven marketing materials all work well. The key is assets that can be repurposed, licensed, or leveraged for recurring revenue."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you ensure the income is truly passive?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We focus on automation and systems. Once set up, the income streams run through automated processes, subscription models, licensing agreements, or partnership structures that don't require your daily involvement."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will this get in the way of what I'm already doing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It runs quietly alongside your business, going back for money you've already earned. It isn't a rebuild and there are no new plates for you to spin. We build it and we run it while you keep doing exactly what's already working."
             }
           }
         ]
@@ -357,6 +557,7 @@
           From Your Digital Assets
         </h1>
         <p class="hero-subtitle">
+          The money is already sitting in your audience, your content and your old leads. We go get it for you, you don't lift a finger. 
           We specialize in creating income streams that pay you repeatedly without requiring ongoing effort. 
           Imagine setting something up once and getting paid month after month, year after year.
         </p>
@@ -388,6 +589,29 @@
         <div class="hero-cta">
           <a href="#contact" class="btn btn-primary">Partner With Us</a>
           <a href="#examples" class="btn btn-secondary">See Examples</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Strip -->
+  <section class="pari-trust-strip" aria-label="How we work with you">
+    <div class="container">
+      <div class="pari-trust-grid">
+        <div class="pari-trust-item">
+          <div class="pari-trust-icon">💵</div>
+          <h4>Nothing Up Front</h4>
+          <p>You don't pay a dime until the money is already in your account.</p>
+        </div>
+        <div class="pari-trust-item">
+          <div class="pari-trust-icon">📉</div>
+          <h4>No New Ad Spend</h4>
+          <p>We go back to the audience you already built. No new ad budget required.</p>
+        </div>
+        <div class="pari-trust-item">
+          <div class="pari-trust-icon">🤝</div>
+          <h4>We Handle Everything</h4>
+          <p>We build it and we run it, so you keep doing exactly what already works.</p>
         </div>
       </div>
     </div>
@@ -595,7 +819,7 @@
 
       <div class="repurposing-cta">
         <h3>Ready to Repurpose Your Assets?</h3>
-        <p>Let's identify the hidden income potential in what you already have.</p>
+        <p>Let's identify the hidden income potential in what you already have. It's already there. We just go get it.</p>
         <a href="#contact" class="btn btn-primary">Explore Your Assets</a>
       </div>
     </div>
@@ -606,7 +830,7 @@
     <div class="container">
       <div class="section-header">
         <h2>We Turn Your Existing Assets & Audience into Passive Recurring Revenue</h2>
-        <p>Do you own valuable digital assets like content, courses, or a large audience? Many creators have incredible assets they aren't fully monetizing. We handle the entire process of monetizing your assets and/or distribution, without you lifting a finger... then we share the recurring profits.</p>
+        <p>Do you own valuable digital assets like content, courses, or a large audience? Many creators have incredible assets they aren't fully monetizing. The money is already there, and we go get it. We handle the entire process of monetizing your assets and/or distribution, without you lifting a finger... then we share the recurring profits.</p>
       </div>
 
       <div class="partner-benefits">
@@ -631,8 +855,42 @@
         <div class="benefit-card">
           <div class="benefit-icon">⚡</div>
           <h3>Remove Your Effort</h3>
-          <p>Generate income from the asset itself, not from your ongoing time or energy. We handle the repurposing, setup, and automation.</p>
+          <p>Generate income from the asset itself, not from your ongoing time or energy. We handle the repurposing, setup, and automation, from driving the conversations to delivering the results. You just keep doing what you already do.</p>
         </div>
+      </div>
+
+      <!-- Why Owners Say Yes -->
+      <div class="pari-why-yes">
+        <div class="pari-why-yes-header">
+          <h3>Keep Doing Everything You're Already Doing. We Just Bolt This On.</h3>
+          <p>This isn't a rebuild. It's another line in the water, running quietly alongside your business and going back for money you've already earned.</p>
+        </div>
+        <div class="partner-benefits">
+          <div class="benefit-card">
+            <div class="benefit-icon">💵</div>
+            <h3>Nothing Up Front</h3>
+            <p>You don't pay us a dime until the work is done and the money is in your account. We only get paid on what we produce.</p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">🤫</div>
+            <h3>We Don't Get in Your Way</h3>
+            <p>It runs quietly next to what's already working. Your current offers, funnels and customers stay exactly as they are.</p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">🎡</div>
+            <h3>No New Plate to Spin</h3>
+            <p>We build it and we run it. Keep doing exactly what's already working because this doesn't touch it.</p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">📉</div>
+            <h3>Not a Single Extra Dollar</h3>
+            <p>No new ad budget. We go back to the audience you already paid to build: the buyers, leads and followers already sitting in your world.</p>
+          </div>
+        </div>
+        <p class="pari-math-line">The math is simple. If someone can add revenue with no risk, no upfront cost and no extra work on your end, the only real question is why you'd say no.</p>
       </div>
 
       <div class="process">
@@ -693,7 +951,7 @@
 
       <div class="cta-section">
         <h3>Ready to Generate Passive Income from Your Assets?</h3>
-        <p>Let's explore how your existing content and audience can work for you 24/7.</p>
+        <p>Let's explore how your existing content and audience can work for you 24/7. You've already got the audience. Let's go get the money.</p>
         <a href="#contact" class="btn btn-primary">Partner With Us Today</a>
       </div>
     </div>
@@ -710,6 +968,8 @@
       <div class="lead-revival-single-column">
         <div class="lead-revival-content">
           <p>Turn Your CRM Database into a Revenue-Generating Machine. Most businesses have thousands of old unsold leads and past customers sitting in their database doing nothing. We use AI-powered agents, custom-trained on advanced sales methods as well as your particular company, to automatically follow up with these contacts and generate new sales, reviews, referrals, and collect late payments.</p>
+
+          <p>Every dollar here is pure bottom-line revenue. You already paid to get these people, whether they bought or not. This simply goes and collects what they were always worth. The move is the same every time: go back to the people who already said "not now," and start a real conversation.</p>
           
           <div class="revival-benefits-2x2">
             <div class="revival-benefit">
@@ -774,6 +1034,24 @@
             <h4>Continuous Optimization</h4>
             <p>AI learns from every interaction to improve response rates and conversion over time.</p>
           </div>
+
+          <div class="lead-revival-card">
+            <div class="card-icon">🗣️</div>
+            <h4>Understood, Not Closed</h4>
+            <p>People don't get closed. They get understood. Every conversation is a real one that leads a good-fit person toward the answer, with no pressure and nobody talked into something they'll regret.</p>
+          </div>
+
+          <div class="lead-revival-card">
+            <div class="card-icon">🔙</div>
+            <h4>Back to the People Who Said "Not Now"</h4>
+            <p>We return to the buyers and leads who passed before and start a real conversation, collecting what they were always worth without new ad spend.</p>
+          </div>
+
+          <div class="lead-revival-card">
+            <div class="card-icon">🛡️</div>
+            <h4>Fewer Bad-Fit Buyers</h4>
+            <p>When people feel understood, the right ones say yes on their own and the wrong ones bow out early. That helps you steer clear of bad-fit buyers and the refunds that follow them.</p>
+          </div>
         </div>
       </div>
 
@@ -797,8 +1075,48 @@
 
       <div class="revival-cta">
         <h3>Ready to Revive Your Database?</h3>
-        <p>Let our AI agents turn your old leads and customers into a recurring revenue stream.</p>
+        <p>Your list is next. Let our AI agents turn your old leads and customers into a recurring revenue stream, and go collect what they were always worth.</p>
         <a href="#contact" class="btn btn-primary">Start Database Revival</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI Calculator Section -->
+  <section id="list-calculator" class="pari-calc">
+    <div class="container">
+      <div class="section-header">
+        <h2>Do the Math on Your Own List</h2>
+        <p>What's already sitting in your list? This is money you've already paid to bring in, whether those people bought the big thing or not. Put in your numbers and see what converting even a little more of them looks like.</p>
+      </div>
+
+      <div class="pari-calc-card">
+        <div class="pari-calc-inputs">
+          <div class="pari-calc-field">
+            <label for="calc-list">Buyers &amp; leads on your list</label>
+            <input type="number" id="calc-list" value="10000" min="0" step="100" inputmode="numeric">
+          </div>
+          <div class="pari-calc-field">
+            <label for="calc-price">Your offer price ($)</label>
+            <input type="number" id="calc-price" value="5000" min="0" step="100" inputmode="numeric">
+          </div>
+        </div>
+
+        <div class="pari-calc-slider">
+          <label for="calc-pct"><span>Convert just this much more of them</span><span id="calc-pct-label">1%</span></label>
+          <input type="range" id="calc-pct" min="0.5" max="10" step="0.5" value="1">
+        </div>
+
+        <div class="pari-calc-result" aria-live="polite">
+          <div class="pari-calc-result-label">Found Money</div>
+          <div class="pari-calc-result-amount" id="calc-revenue">$500,000</div>
+          <div class="pari-calc-result-formula" id="calc-formula">100 more buyers &times; $5,000</div>
+        </div>
+
+        <p class="pari-calc-note">And you don't pay a dime until that money is already in your account.</p>
+        <p class="pari-calc-disclaimer">Illustrative math only, based on the numbers you enter. It is not a guarantee or forecast of results, which vary by list, offer and market.</p>
+        <div style="text-align: center; margin-top: 1.5rem;">
+          <a href="#contact" class="btn btn-primary">Show Me What's In My List</a>
+        </div>
       </div>
     </div>
   </section>
@@ -1057,6 +1375,16 @@
 
         <div class="faq-item">
           <div class="faq-question">
+            <h4>Do I have to pay anything up front?</h4>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>In most partnerships, you don't pay a dime up front. We typically work on revenue-sharing, so we only get paid on what we actually produce, after the money is already in your account.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
             <h4>How long does it take to see results?</h4>
             <span class="faq-toggle">+</span>
           </div>
@@ -1092,6 +1420,16 @@
           </div>
           <div class="faq-answer">
             <p>We focus on automation and systems. Once set up, the income streams run through automated processes, subscription models, licensing agreements, or partnership structures that don't require your daily involvement.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h4>Will this get in the way of what I'm already doing?</h4>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>No. It runs quietly alongside your business, going back for money you've already earned. It isn't a rebuild and there are no new plates for you to spin. We build it and we run it while you keep doing exactly what's already working.</p>
           </div>
         </div>
       </div>
@@ -1495,7 +1833,7 @@
       <div class="contact-content" style="max-width: 700px; margin: 0 auto; text-align: center;">
         <div class="contact-info">
           <h2>Ready to Explore the Power of PARI?</h2>
-          <p style="color: #64748b; margin-bottom: 2.5rem; font-size: 1.125rem;">Whether you are looking to monetize your existing assets or acquire digital assets for passive income, let's connect!</p>
+          <p style="color: #64748b; margin-bottom: 2.5rem; font-size: 1.125rem;">Whether you are looking to monetize your existing assets or acquire digital assets for passive income, let's connect! You've already got the audience. Let's go get the money. Whoever you are, we just want you to win.</p>
           
           <form id="pari-contact-form" style="display: flex; flex-direction: column; gap: 1.2rem; text-align: left; background: #ffffff; padding: 2.5rem; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);">
             
@@ -1569,6 +1907,7 @@
           <div class="footer-column">
             <h4>Resources</h4>
             <a href="#examples">Repurposing Examples</a>
+            <a href="#list-calculator">List Calculator</a>
             <a href="#case-studies">Case Studies</a>
             <a href="#faq">FAQ</a>
             <a href="#about">About Us</a>
@@ -1590,6 +1929,44 @@
       </div>
     </div>
   </footer>
+
+  <!-- ROI Calculator Script -->
+  <script>
+    (function () {
+      var listInput = document.getElementById('calc-list');
+      var priceInput = document.getElementById('calc-price');
+      var pctInput = document.getElementById('calc-pct');
+      var pctLabel = document.getElementById('calc-pct-label');
+      var revenueOut = document.getElementById('calc-revenue');
+      var formulaOut = document.getElementById('calc-formula');
+
+      if (!listInput || !priceInput || !pctInput || !pctLabel || !revenueOut || !formulaOut) {
+        return;
+      }
+
+      function money(n) {
+        return '$' + Math.round(n).toLocaleString('en-US');
+      }
+
+      function update() {
+        var listSize = Math.max(0, parseFloat(listInput.value) || 0);
+        var price = Math.max(0, parseFloat(priceInput.value) || 0);
+        var pct = parseFloat(pctInput.value) || 0;
+
+        var buyers = Math.round(listSize * pct / 100);
+        var revenue = buyers * price;
+
+        pctLabel.textContent = pct + '%';
+        revenueOut.textContent = money(revenue);
+        formulaOut.textContent = buyers.toLocaleString('en-US') + ' more ' + (buyers === 1 ? 'buyer' : 'buyers') + ' \u00D7 ' + money(price);
+      }
+
+      listInput.addEventListener('input', update);
+      priceInput.addEventListener('input', update);
+      pctInput.addEventListener('input', update);
+      update();
+    })();
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script src="script.js"></script>
